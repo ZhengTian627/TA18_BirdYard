@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # birdyard
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -33,3 +34,6 @@ npm run build
 ```sh
 npm run lint
 ```
+=======
+# birdyard_frontend
+>>>>>>> 16ff5b0229eb14ed219f19c36fde78fc5ec110c0
