@@ -38,5 +38,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+            echo "🚀 Deploy script starting"
+            ls -l ~/birdyard
+            file ~/birdyard/deploy.sh
             chmod +x ~/birdyard/deploy.sh
             bash ~/birdyard/deploy.sh
