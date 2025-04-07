@@ -1,4 +1,4 @@
-name: Deploy Spring Boot to EC2
+name: 🚀 Deploy Spring Boot to EC2
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⏬ Checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up JDK 17
@@ -19,7 +19,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Maven
+      - name: 🛠 Fix mvnw permission
+        run: chmod +x ./mvnw
+
+      - name: Build Spring Boot app
         run: ./mvnw clean package -DskipTests
 
       - name: Upload JAR to EC2
@@ -31,15 +34,14 @@ jobs:
           source: "target/*.jar"
           target: "~/birdyard"
 
-      - name: Run deploy script on EC2
+      - name: 🚀 Run deploy script on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            echo "🚀 Deploy script starting"
-            ls -l ~/birdyard
-            file ~/birdyard/deploy.sh
-            chmod +x ~/birdyard/deploy.sh
-            bash ~/birdyard/deploy.sh
+            echo "Listing deploy directory:"
+            ls -l /home/ubuntu/birdyard
+            chmod +x /home/ubuntu/birdyard/deploy.sh
+            bash /home/ubuntu/birdyard/deploy.sh
