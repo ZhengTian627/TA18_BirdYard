@@ -3,7 +3,7 @@ package com.ta18.birdyard.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "plants") // 表名要与数据库完全一致（区分大小写）
+@Table(name = "plants")
 public class RecommendedPlant {
 
   @Id
@@ -23,8 +23,6 @@ public class RecommendedPlant {
 
   @Column(name = "description")
   private String description;
-
-  // 必须要有标准 getter/setter，JPA 才能正确注入值
 
   public Integer getId() {
     return id;
