@@ -39,4 +39,4 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             chmod +x ~/birdyard/deploy.sh
-            ~/birdyard/deploy.sh
+            bash ~/birdyard/deploy.sh
