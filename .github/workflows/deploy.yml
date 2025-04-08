@@ -34,14 +34,18 @@ jobs:
           source: "target/*.jar"
           target: "~/birdyard"
 
-      - name: 🚀 Run deploy script on EC2
+      - name: 🚀 Run deploy script on EC2 (with env variables)
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
+          envs: DB_URL,DB_USER,DB_PASSWORD
           script: |
             echo "Listing deploy directory:"
             ls -l /home/ubuntu/birdyard
             chmod +x /home/ubuntu/birdyard/deploy.sh
+            export DB_URL="${{ secrets.DB_URL }}"
+            export DB_USER="${{ secrets.DB_USER }}"
+            export DB_PASSWORD="${{ secrets.DB_PASSWORD }}"
             bash /home/ubuntu/birdyard/deploy.sh
