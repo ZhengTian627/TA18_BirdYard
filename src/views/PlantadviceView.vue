@@ -141,21 +141,21 @@ fetchRecommendedPlants(); });
 import { ref, reactive } from 'vue'
 import axios from 'axios'
 
-// 植物推荐API函数
+// recommended Plants API
 const getRecommendedPlants = async (state, season) => {
   try {
-    console.log(`正在请求植物数据 - 州: ${state}, 季节: ${season}`)
-    const response = await axios.get('http://54.234.185.8:8080/api/plants', {
+    console.log(`request plant data - state: ${state}, season: ${season}`)
+    const response = await axios.get('https://rm3hr3vrfh.execute-api.us-east-1.amazonaws.com/birdyardplants/', {
       params: {
         state: state,
         season: season,
       },
     })
-    console.log('API响应:', response)
-    console.log('植物数据:', response.data)
-    return response.data // 返回植物数组
+    console.log('API responds:', response)
+    console.log('plant data:', response.data)
+    return response.data 
   } catch (error) {
-    console.error('获取植物数据失败:', error)
+    console.error('get plant data failed:', error)
     throw error
   }
 }
