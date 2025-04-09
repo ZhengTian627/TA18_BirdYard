@@ -350,7 +350,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'https://e5df629i4k.execute-api.us-east-1.amazonaws.com/birdDetection/predict'
+        const apiUrl = 'https://e5df629i4k.execute-api.us-east-1.amazonaws.com/birdyardDetection/predict'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {
