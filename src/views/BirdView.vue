@@ -350,7 +350,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'https://7975ogxv54.execute-api.us-east-1.amazonaws.com'
+        const apiUrl = 'https://e5df629i4k.execute-api.us-east-1.amazonaws.com'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {
