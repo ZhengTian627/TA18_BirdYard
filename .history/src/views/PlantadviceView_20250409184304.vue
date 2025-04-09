@@ -6,8 +6,6 @@ fetchRecommendedPlants(); });
     <div class="banner">
       <h1 class="banner-title">NATIVE PLANT SUGGESTIONS</h1>
       <p class="banner-subtitle">UNDERSTAND YOUR PLANT BASED ON YOUR CLIMATE</p>
-      <p class="banner-subtitle">INPUT YOUR LOCATION AND SEASON TO FIND PLANTS FOR YOU</p>
-      <p class="banner-subtitle">WE CAN HELP YOU IN VICTORA, SOUTH AUSTRALIA AND QUEENSLAND</p>
     </div>
 
     <!-- Search Section -->
@@ -107,7 +105,7 @@ fetchRecommendedPlants(); });
 
       <!-- Plant Recommendations Section -->
       <div class="recommendations-section" v-if="selectedSeason">
-        <h2 class="recommendations-title">Recommended Plants</h2>
+        <h2 class="recommendations-title">Recommended Plants:</h2>
 
         <div v-if="loading" class="loading-indicator">Loading plant recommendations...</div>
 
@@ -304,9 +302,7 @@ export default {
       }
     }
 
-    // These are the two functions that need to be modified:
-
-    const selectSuggestion = (index) => {
+    const selectSuggestion = async (index) => {
       if (suggestions.value.length <= index) return
 
       const selected = suggestions.value[index]
@@ -320,34 +316,7 @@ export default {
         }
       }
 
-      suggestions.value = [] // Clear suggestions only
-      // We no longer determine the state or fetch plants here
-    }
-
-    const searchLocation = async () => {
-      if (address.value.trim() === '') {
-        locationError.value = 'Please enter a location'
-        return
-      }
-
-      locationError.value = '' // Clear any previous errors
-
-      // Check if we already have location coordinates (from a selected suggestion)
-      if (!selectedLocation.value && suggestions.value.length > 0) {
-        // If we have suggestions but no selection, use the first suggestion
-        await selectSuggestion(0)
-      } else if (!selectedLocation.value) {
-        // If we don't have coordinates or suggestions, try to fetch them
-        await fetchSuggestions()
-        if (suggestions.value.length > 0) {
-          await selectSuggestion(0)
-        } else {
-          locationError.value = 'Location not found. Please try a more specific address.'
-          return
-        }
-      }
-
-      // Now determine the state from the selected address
+      // Determine the state from the address
       const addressLower = address.value.toLowerCase()
 
       if (addressLower.includes('queensland') || addressLower.includes('qld')) {
@@ -375,29 +344,37 @@ export default {
               stateName === 'South Australia'
             ) {
               selectedState.value = stateName
-              localStorage.setItem('selectedState', selectedState.value)
             } else {
               locationError.value =
                 'We currently only service Queensland, Victoria, and South Australia. Please select a location in these states.'
               selectedState.value = ''
-              return
             }
           } else {
             locationError.value =
               'Could not determine the state. Please ensure your address is in Australia.'
             selectedState.value = ''
-            return
           }
         } catch (err) {
           console.error('Reverse geocoding failed:', err)
           locationError.value = 'Could not determine your state. Please try a different address.'
           selectedState.value = ''
-          return
         }
       }
 
-      // Now that we have the state, fetch plant recommendations
-      fetchRecommendedPlants()
+      suggestions.value = [] // Clear suggestions
+    }
+
+    const searchLocation = () => {
+      if (address.value.trim() === '') {
+        locationError.value = 'Please enter a location'
+        return
+      }
+
+      if (suggestions.value.length > 0) {
+        selectSuggestion(0) // Select the first suggestion
+      } else {
+        fetchSuggestions() // Try to fetch suggestions first
+      }
     }
 
     const selectSeason = (season) => {
@@ -504,18 +481,18 @@ export default {
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/garden.jpeg');
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 .banner-title {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -662,7 +639,7 @@ export default {
 /* Recommendations section styles */
 .recommendations-section {
   margin-top: 40px;
-  align-items: center;
+  justify-content: center;
 }
 
 .recommendations-title {

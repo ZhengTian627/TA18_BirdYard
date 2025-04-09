@@ -68,34 +68,34 @@
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Zheng.png" alt="Zheng" /></div>
             <h3>Zheng Tian</h3>
-            <p>Back-End Developer</p>
+            <p>Full stack developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Xiaoyue.png" alt="Xiaoyue" /></div>
             <h3>Xiaoyue Jin</h3>
-            <p>Front-End Developer</p>
+            <p>Full stack developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Tanran.png" alt="Tanran" /></div>
             <h3>Tanran Liu</h3>
-            <p>Deployment Specialist</p>
+            <p>Developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo">
               <img src="@/assets/images/Madhavi.png" alt="Madhavi" />
             </div>
-            <h3>Madhavi Vishwanatha</h3>
-            <p>Database Developer</p>
+            <h3>Madhavi</h3>
+            <p>Data Science</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/champ.png" alt="Champ" /></div>
-            <h3>Natthapong Chantaklad</h3>
-            <p>AI Developer</p>
+            <h3>Champ</h3>
+            <p>AI developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/kunal.png" alt="Kunal" /></div>
-            <h3>Kunal Gupta</h3>
-            <p>Prototype Designer</p>
+            <h3>Kunal</h3>
+            <p>MBIS</p>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
         <p>
           Join thousands of homeowners who have transformed their yards into thriving bird habitats.
         </p>
-        <router-link to="/home" class="cta-button">Get Started Today</router-link>
+        <router-link to="/contact" class="cta-button">Get Started Today</router-link>
       </div>
     </section>
   </div>
@@ -130,16 +130,16 @@ export default {
   color: white;
   padding: 80px 0;
   text-align: center;
-  background-image: url('@/assets/images/aboutbanner.png');
+  background-image:
+    linear-gradient(rgba(10, 50, 0, 0.8), rgba(10, 50, 0, 0.8)), url('@/assets/images/aboutus.png');
   background-size: 100% auto;
   min-height: 400px;
-  background-position: center 15%;
+  background-position: center;
 }
 
 .hero h1 {
   font-size: 3rem;
-  margin-top: 80px;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 .subtitle {
@@ -169,11 +169,11 @@ export default {
   color: var(--color-primary);
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .about-text h2:first-child {
-  margin-top: 0;
+  margin-top: 10;
 }
 
 .about-text p {

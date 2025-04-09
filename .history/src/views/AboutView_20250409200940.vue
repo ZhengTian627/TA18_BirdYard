@@ -68,34 +68,34 @@
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Zheng.png" alt="Zheng" /></div>
             <h3>Zheng Tian</h3>
-            <p>Back-End Developer</p>
+            <p>Full stack developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Xiaoyue.png" alt="Xiaoyue" /></div>
             <h3>Xiaoyue Jin</h3>
-            <p>Front-End Developer</p>
+            <p>Full stack developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Tanran.png" alt="Tanran" /></div>
             <h3>Tanran Liu</h3>
-            <p>Deployment Specialist</p>
+            <p>Developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo">
               <img src="@/assets/images/Madhavi.png" alt="Madhavi" />
             </div>
-            <h3>Madhavi Vishwanatha</h3>
-            <p>Database Developer</p>
+            <h3>Madhavi</h3>
+            <p>Data Science</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/champ.png" alt="Champ" /></div>
-            <h3>Natthapong Chantaklad</h3>
-            <p>AI Developer</p>
+            <h3>Champ</h3>
+            <p>AI developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/kunal.png" alt="Kunal" /></div>
-            <h3>Kunal Gupta</h3>
-            <p>Prototype Designer</p>
+            <h3>Kunal</h3>
+            <p>MBIS</p>
           </div>
         </div>
       </div>

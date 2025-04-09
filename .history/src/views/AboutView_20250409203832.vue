@@ -68,12 +68,12 @@
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Zheng.png" alt="Zheng" /></div>
             <h3>Zheng Tian</h3>
-            <p>Back-End Developer</p>
+            <p>Full stack developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Xiaoyue.png" alt="Xiaoyue" /></div>
             <h3>Xiaoyue Jin</h3>
-            <p>Front-End Developer</p>
+            <p>Full stack developer</p>
           </div>
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/Tanran.png" alt="Tanran" /></div>

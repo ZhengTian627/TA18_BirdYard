@@ -511,7 +511,7 @@ export default {
   align-items: center;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 .banner-title {

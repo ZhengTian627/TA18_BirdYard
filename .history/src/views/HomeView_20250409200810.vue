@@ -39,81 +39,46 @@
         </div>
       </div>
     </section>
-
     <!-- Information Section with Modal Popups -->
-    <section class="info-section">
-      <div class="container">
-        <h2 class="info-title">Discover Garden Wisdom</h2>
+    <!-- Birds Information Card with Modal Popup -->
+    <div class="info-card-container birds-container">
+      <!-- Slogan Column -->
+      <div class="slogan-column">
+        <h3 class="slogan-heading">Wanna Make Your Garden Better?</h3>
+        <p class="slogan-text">
+          Transform your backyard into a bird paradise with the right plants and care.
+        </p>
+        <p class="slogan-highlight">Birds bring life, color, and music to your outdoor space!</p>
+      </div>
 
-        <!-- Plant Information Card -->
-        <div class="info-card-container">
-          <div class="info-card">
-            <div class="card-image" @click="showPlantInfo = !showPlantInfo">
-              <img src="@/assets/images/plant-importance.jpg" alt="Plant importance" />
-              <div class="card-overlay">
-                <h3>Plants: The Garden Foundation</h3>
-                <span class="learn-more">Learn More</span>
-              </div>
-            </div>
+      <!-- Card Column -->
+      <div class="info-card">
+        <div class="card-image" @click="showBirdModal = true">
+          <img src="@/assets/images/attracting-birds.jpg" alt="Attracting birds" />
+          <div class="card-overlay">
+            <h3>Attracting Birds with Plants</h3>
+            <span class="learn-more">Learn More</span>
           </div>
-
-          <transition name="fade">
-            <div class="info-panel" v-if="showPlantInfo">
-              <button class="info-panel-close" @click="closePlantInfo">&times;</button>
-              <h3>Building a Thriving Ecosystem</h3>
-              <p>Plants are the foundation of every healthy garden ecosystem. They provide:</p>
-              <ul>
-                <li>
-                  <strong>Oxygen production:</strong> Plants release oxygen and absorb carbon
-                  dioxide, improving air quality.
-                </li>
-                <li>
-                  <strong>Soil health:</strong> Root systems prevent erosion and add organic matter
-                  to soil.
-                </li>
-                <li>
-                  <strong>Water filtration:</strong> Plants help filter rainwater, reducing runoff
-                  and pollution.
-                </li>
-                <li>
-                  <strong>Biodiversity:</strong> Native plants support local insects, which are
-                  essential food for birds.
-                </li>
-                <li>
-                  <strong>Climate regulation:</strong> Gardens help cool urban areas and reduce the
-                  heat island effect.
-                </li>
-              </ul>
-
-              <h3>Choosing the Right Plants</h3>
-              <p>
-                Native plants are always the best choice for a bird-friendly garden. They've evolved
-                alongside local wildlife for thousands of years, providing the perfect food sources,
-                shelter, and nesting materials.
-              </p>
-
-              <router-link to="/plantadvice" class="info-link"
-                >Get Plant Recommendations →</router-link
-              >
-            </div>
-          </transition>
         </div>
+      </div>
+    </div>
 
-        <!-- Birds Information Card -->
-        <div class="info-card-container birds-container">
-          <div class="info-card">
-            <div class="card-image" @click="showBirdInfo = !showBirdInfo">
-              <img src="@/assets/images/attracting-birds.jpg" alt="Attracting birds" />
-              <div class="card-overlay">
-                <h3>Attracting Birds with Plants</h3>
-                <span class="learn-more">Learn More</span>
-              </div>
-            </div>
+    <!-- Bird Modal Popup -->
+    <transition name="fade">
+      <div class="modal" v-if="showBirdModal">
+        <div class="modal-overlay" @click="showBirdModal = false"></div>
+        <div class="modal-container">
+          <div class="modal-header">
+            <h2>Attracting Birds with Plants</h2>
+            <button class="close-button" @click="showBirdModal = false">&times;</button>
           </div>
-
-          <transition name="fade">
-            <div class="info-panel" v-if="showBirdInfo">
-              <button class="info-panel-close" @click="closeBirdInfo">&times;</button>
+          <div class="modal-content">
+            <img
+              src="@/assets/images/attracting-birds.jpg"
+              alt="Attracting birds"
+              class="modal-image"
+            />
+            <div class="modal-text">
               <h3>Creating a Bird Haven</h3>
               <p>
                 Birds need four essential things from your garden: food, water, shelter, and nesting
@@ -152,18 +117,98 @@
                 </li>
               </ul>
 
-              <router-link to="/birdguide" class="info-link">Explore Bird Species →</router-link>
+              <router-link to="/birdguide" class="modal-link">Explore Bird Species →</router-link>
             </div>
-          </transition>
+          </div>
         </div>
       </div>
-    </section>
+    </transition>
 
+    <!-- Plant Information Card with Modal Popup -->
+    <div class="info-card-container">
+      <!-- Card Column -->
+      <div class="info-card">
+        <div class="card-image" @click="showPlantModal = true">
+          <img src="@/assets/images/plant-importance.jpg" alt="Plant importance" />
+          <div class="card-overlay">
+            <h3>Plants: The Garden Foundation</h3>
+            <span class="learn-more">Learn More</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slogan Column -->
+      <div class="slogan-column">
+        <h3 class="slogan-heading">Grow More Than Just Plants</h3>
+        <p class="slogan-text">
+          Choose the right plants and watch your garden transform into a living ecosystem.
+        </p>
+        <p class="slogan-highlight">
+          Native plants are the foundation of every bird-friendly garden!
+        </p>
+      </div>
+    </div>
+
+    <!-- Plant Modal Popup -->
+    <transition name="fade">
+      <div class="modal" v-if="showPlantModal">
+        <div class="modal-overlay" @click="showPlantModal = false"></div>
+        <div class="modal-container">
+          <div class="modal-header">
+            <h2>Plants: The Garden Foundation</h2>
+            <button class="close-button" @click="showPlantModal = false">&times;</button>
+          </div>
+          <div class="modal-content">
+            <img
+              src="@/assets/images/plant-importance.jpg"
+              alt="Plant importance"
+              class="modal-image"
+            />
+            <div class="modal-text">
+              <h3>Building a Thriving Ecosystem</h3>
+              <p>Plants are the foundation of every healthy garden ecosystem. They provide:</p>
+              <ul>
+                <li>
+                  <strong>Oxygen production:</strong> Plants release oxygen and absorb carbon
+                  dioxide, improving air quality.
+                </li>
+                <li>
+                  <strong>Soil health:</strong> Root systems prevent erosion and add organic matter
+                  to soil.
+                </li>
+                <li>
+                  <strong>Water filtration:</strong> Plants help filter rainwater, reducing runoff
+                  and pollution.
+                </li>
+                <li>
+                  <strong>Biodiversity:</strong> Native plants support local insects, which are
+                  essential food for birds.
+                </li>
+                <li>
+                  <strong>Climate regulation:</strong> Gardens help cool urban areas and reduce the
+                  heat island effect.
+                </li>
+              </ul>
+
+              <h3>Choosing the Right Plants</h3>
+              <p>
+                Native plants are always the best choice for a bird-friendly garden. They've evolved
+                alongside local wildlife for thousands of years, providing the perfect food sources,
+                shelter, and nesting materials.
+              </p>
+
+              <router-link to="/plantadvice" class="modal-link"
+                >Get Plant Recommendations →</router-link
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
     <!-- Call to Action -->
     <section class="cta-section">
       <router-link to="/plantadvice" class="btn btn-large">Let's Build Your Backyard</router-link>
     </section>
-
     <!-- Grow in 4 Steps Section -->
     <section class="steps-section">
       <div class="container">
@@ -222,17 +267,9 @@ export default defineComponent({
   name: 'HomePage',
   data() {
     return {
-      showPlantInfo: false,
-      showBirdInfo: false,
+      showPlantModal: false,
+      showBirdModal: false,
     }
-  },
-  methods: {
-    closePlantInfo() {
-      this.showPlantInfo = false
-    },
-    closeBirdInfo() {
-      this.showBirdInfo = false
-    },
   },
 })
 </script>
@@ -243,7 +280,7 @@ export default defineComponent({
   max-width: 1200px;
   top: 0;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 auto;
 }
 
 .btn {
@@ -413,7 +450,7 @@ export default defineComponent({
   line-height: 1.6;
 }
 
-/* Info Section Styles - IMPROVED VERSION */
+/* Info Section Styles */
 .info-section {
   padding: 80px 0;
   background-color: #f9f9f9;
@@ -429,7 +466,7 @@ export default defineComponent({
 .info-card-container {
   display: flex;
   margin-bottom: 80px;
-  align-items: flex-start;
+  align-items: center;
   gap: 40px;
 }
 
@@ -440,7 +477,7 @@ export default defineComponent({
 .info-card {
   flex: 0 0 50%;
   max-width: 580px;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition:
@@ -450,25 +487,19 @@ export default defineComponent({
 
 .info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
   position: relative;
   height: 580px;
   cursor: pointer;
-  overflow: hidden;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.info-card:hover .card-image img {
-  transform: scale(1.05);
 }
 
 .card-overlay {
@@ -477,33 +508,21 @@ export default defineComponent({
   left: 0;
   right: 0;
   background: linear-gradient(transparent, rgba(10, 50, 0, 0.8));
-  padding: 25px;
+  padding: 20px;
   color: white;
   transition: background 0.3s ease;
 }
 
 .card-overlay h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
 }
 
 .learn-more {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   font-weight: 600;
-  color: #c2e59c;
   border-bottom: 2px solid #c2e59c;
   padding-bottom: 2px;
-  transition: all 0.3s ease;
-}
-
-.learn-more::after {
-  content: '+';
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 18px;
-  font-weight: bold;
   transition: transform 0.3s ease;
 }
 
@@ -515,49 +534,189 @@ export default defineComponent({
   transform: translateX(5px);
 }
 
-.card-image:hover .learn-more::after {
-  transform: rotate(90deg);
-}
-
-/* Info Panel Styles */
-.info-panel {
+/* Slogan Column Styles */
+.slogan-column {
   flex: 1;
-  background-color: #f0f0f0;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  position: relative;
-  border-left: 4px solid #c2e59c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30px;
 }
 
-.info-panel-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 32px;
-  height: 32px;
-  background: rgba(10, 50, 0, 0.1);
-  border-radius: 50%;
+.slogan-heading {
+  font-size: 2rem;
+  color: #0a3200;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.slogan-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.slogan-highlight {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4a7d32;
+  padding: 15px;
+  background-color: rgba(194, 229, 156, 0.3);
+  border-left: 4px solid #c2e59c;
+  margin-top: 20px;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-  color: #0a3200;
-  font-size: 22px;
 }
 
-.info-panel-close:hover {
-  background: rgba(10, 50, 0, 0.2);
-  transform: rotate(90deg);
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 101;
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  background-color: white;
+  border-radius: 8px;
+  overflow-y: auto;
+  z-index: 102;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-side-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100vh;
+  background-color: white;
+  overflow-y: auto;
+  z-index: 102;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.modal-header h2 {
+  color: #0a3200;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #0a3200;
+}
+
+.modal-content {
+  padding: 0;
+}
+
+.modal-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-text {
+  padding: 30px;
+}
+
+.modal-text h3 {
+  color: #0a3200;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.modal-text h3:first-child {
+  margin-top: 0;
+}
+
+.modal-text p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.modal-text ul {
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.modal-text li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.modal-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #0a3200;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #c2e59c;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  padding-bottom: 3px;
+}
+
+.modal-link:hover {
+  color: #4a7d32;
+  transform: translateX(5px);
+}
+
+/* Info Panel Styles (保留但弹窗替代) */
+.info-panel {
+  flex: 1;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .info-panel h3 {
   color: #0a3200;
   margin-top: 0;
   margin-bottom: 15px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .info-panel h3:not(:first-child) {
@@ -571,22 +730,20 @@ export default defineComponent({
 
 .info-panel ul {
   margin-bottom: 20px;
-  padding-left: 20px;
 }
 
 .info-panel li {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.6;
 }
 
 .info-link {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 10px;
   color: #0a3200;
   font-weight: 600;
   text-decoration: none;
   border-bottom: 2px solid #c2e59c;
-  padding-bottom: 2px;
   transition: all 0.3s ease;
 }
 
@@ -598,17 +755,26 @@ export default defineComponent({
 /* Transition Animation */
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
+}
+
+.slide-right-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-right-leave-active {
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.7, 1);
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
 }
 
 /* Responsive Design */
@@ -620,6 +786,10 @@ export default defineComponent({
 
   .steps-container {
     grid-template-columns: 1fr;
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .info-card-container {
@@ -637,10 +807,17 @@ export default defineComponent({
     max-width: 500px;
   }
 
-  .info-panel {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
+  .modal-container {
+    width: 95%;
+  }
+
+  .slogan-column {
+    text-align: center;
+    padding: 0 20px 30px 20px;
+  }
+
+  .slogan-heading {
+    font-size: 1.8rem;
   }
 }
 
@@ -669,18 +846,53 @@ export default defineComponent({
     font-size: 1.8rem;
   }
 
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+
   .info-card {
     width: 90%;
-    height: auto;
   }
 
-  .card-image {
-    height: 350px;
+  .modal-container {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
   }
 
-  .info-panel {
-    width: 90%;
-    padding: 25px 20px;
+  .modal-image {
+    height: 200px;
   }
+
+  .modal-text {
+    padding: 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* 增强模态框视觉效果 */
+.modal-container {
+  animation: modal-appear 0.3s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 为鼠标悬停在关闭按钮上添加效果 */
+.close-button:hover {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
 }
 </style>

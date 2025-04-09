@@ -507,11 +507,11 @@ export default {
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center 55%;
   align-items: center;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 .banner-title {

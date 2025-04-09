@@ -34,7 +34,7 @@ export default {
   width: 100%;
   padding: 20px 0;
   z-index: 1000;
-  background-color: rgba(10, 50, 0, 0.25);
+  background-color: rgba(10, 50, 0, 0.5);
   backdrop-filter: blur(5px);
 }
 

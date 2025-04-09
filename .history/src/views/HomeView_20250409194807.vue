@@ -39,14 +39,14 @@
         </div>
       </div>
     </section>
-
+    <!-- Information Section with Modal Popups -->
     <!-- Information Section with Modal Popups -->
     <section class="info-section">
       <div class="container">
         <h2 class="info-title">Discover Garden Wisdom</h2>
 
         <!-- Plant Information Card -->
-        <div class="info-card-container">
+        <div class="info-card-wrapper">
           <div class="info-card">
             <div class="card-image" @click="showPlantInfo = !showPlantInfo">
               <img src="@/assets/images/plant-importance.jpg" alt="Plant importance" />
@@ -55,52 +55,53 @@
                 <span class="learn-more">Learn More</span>
               </div>
             </div>
+
+            <transition name="slide">
+              <div class="info-panel" v-if="showPlantInfo">
+                <div class="info-content">
+                  <h3>Building a Thriving Ecosystem</h3>
+                  <p>Plants are the foundation of every healthy garden ecosystem. They provide:</p>
+                  <ul>
+                    <li>
+                      <strong>Oxygen production:</strong> Plants release oxygen and absorb carbon
+                      dioxide, improving air quality.
+                    </li>
+                    <li>
+                      <strong>Soil health:</strong> Root systems prevent erosion and add organic
+                      matter to soil.
+                    </li>
+                    <li>
+                      <strong>Water filtration:</strong> Plants help filter rainwater, reducing
+                      runoff and pollution.
+                    </li>
+                    <li>
+                      <strong>Biodiversity:</strong> Native plants support local insects, which are
+                      essential food for birds.
+                    </li>
+                    <li>
+                      <strong>Climate regulation:</strong> Gardens help cool urban areas and reduce
+                      the heat island effect.
+                    </li>
+                  </ul>
+
+                  <h3>Choosing the Right Plants</h3>
+                  <p>
+                    Native plants are always the best choice for a bird-friendly garden. They've
+                    evolved alongside local wildlife for thousands of years, providing the perfect
+                    food sources, shelter, and nesting materials.
+                  </p>
+
+                  <router-link to="/plantadvice" class="info-link"
+                    >Get Plant Recommendations →</router-link
+                  >
+                </div>
+              </div>
+            </transition>
           </div>
-
-          <transition name="fade">
-            <div class="info-panel" v-if="showPlantInfo">
-              <button class="info-panel-close" @click="closePlantInfo">&times;</button>
-              <h3>Building a Thriving Ecosystem</h3>
-              <p>Plants are the foundation of every healthy garden ecosystem. They provide:</p>
-              <ul>
-                <li>
-                  <strong>Oxygen production:</strong> Plants release oxygen and absorb carbon
-                  dioxide, improving air quality.
-                </li>
-                <li>
-                  <strong>Soil health:</strong> Root systems prevent erosion and add organic matter
-                  to soil.
-                </li>
-                <li>
-                  <strong>Water filtration:</strong> Plants help filter rainwater, reducing runoff
-                  and pollution.
-                </li>
-                <li>
-                  <strong>Biodiversity:</strong> Native plants support local insects, which are
-                  essential food for birds.
-                </li>
-                <li>
-                  <strong>Climate regulation:</strong> Gardens help cool urban areas and reduce the
-                  heat island effect.
-                </li>
-              </ul>
-
-              <h3>Choosing the Right Plants</h3>
-              <p>
-                Native plants are always the best choice for a bird-friendly garden. They've evolved
-                alongside local wildlife for thousands of years, providing the perfect food sources,
-                shelter, and nesting materials.
-              </p>
-
-              <router-link to="/plantadvice" class="info-link"
-                >Get Plant Recommendations →</router-link
-              >
-            </div>
-          </transition>
         </div>
 
         <!-- Birds Information Card -->
-        <div class="info-card-container birds-container">
+        <div class="info-card-wrapper align-right">
           <div class="info-card">
             <div class="card-image" @click="showBirdInfo = !showBirdInfo">
               <img src="@/assets/images/attracting-birds.jpg" alt="Attracting birds" />
@@ -109,52 +110,55 @@
                 <span class="learn-more">Learn More</span>
               </div>
             </div>
+
+            <transition name="slide-right">
+              <div class="info-panel right-panel" v-if="showBirdInfo">
+                <div class="info-content">
+                  <h3>Creating a Bird Haven</h3>
+                  <p>
+                    Birds need four essential things from your garden: food, water, shelter, and
+                    nesting sites. The right plants can provide most of these needs!
+                  </p>
+
+                  <h3>Food Sources</h3>
+                  <ul>
+                    <li>
+                      <strong>Berry-producing shrubs:</strong> Elderberry, serviceberry, and dogwood
+                      provide seasonal fruits.
+                    </li>
+                    <li>
+                      <strong>Seed-bearing flowers:</strong> Coneflowers, sunflowers, and black-eyed
+                      Susans offer winter food.
+                    </li>
+                    <li>
+                      <strong>Host plants for insects:</strong> Oak, willow, and native perennials
+                      support caterpillars and bugs that birds feed to their young.
+                    </li>
+                  </ul>
+
+                  <h3>Shelter & Nesting</h3>
+                  <ul>
+                    <li>
+                      <strong>Evergreen trees and shrubs:</strong> Provide year-round protection
+                      from predators and weather.
+                    </li>
+                    <li>
+                      <strong>Dense thickets:</strong> Create safe spaces for small birds to hide
+                      and nest.
+                    </li>
+                    <li>
+                      <strong>Varying heights:</strong> Different bird species prefer nesting at
+                      different levels.
+                    </li>
+                  </ul>
+
+                  <router-link to="/birdguide" class="info-link"
+                    >Explore Bird Species →</router-link
+                  >
+                </div>
+              </div>
+            </transition>
           </div>
-
-          <transition name="fade">
-            <div class="info-panel" v-if="showBirdInfo">
-              <button class="info-panel-close" @click="closeBirdInfo">&times;</button>
-              <h3>Creating a Bird Haven</h3>
-              <p>
-                Birds need four essential things from your garden: food, water, shelter, and nesting
-                sites. The right plants can provide most of these needs!
-              </p>
-
-              <h3>Food Sources</h3>
-              <ul>
-                <li>
-                  <strong>Berry-producing shrubs:</strong> Elderberry, serviceberry, and dogwood
-                  provide seasonal fruits.
-                </li>
-                <li>
-                  <strong>Seed-bearing flowers:</strong> Coneflowers, sunflowers, and black-eyed
-                  Susans offer winter food.
-                </li>
-                <li>
-                  <strong>Host plants for insects:</strong> Oak, willow, and native perennials
-                  support caterpillars and bugs that birds feed to their young.
-                </li>
-              </ul>
-
-              <h3>Shelter & Nesting</h3>
-              <ul>
-                <li>
-                  <strong>Evergreen trees and shrubs:</strong> Provide year-round protection from
-                  predators and weather.
-                </li>
-                <li>
-                  <strong>Dense thickets:</strong> Create safe spaces for small birds to hide and
-                  nest.
-                </li>
-                <li>
-                  <strong>Varying heights:</strong> Different bird species prefer nesting at
-                  different levels.
-                </li>
-              </ul>
-
-              <router-link to="/birdguide" class="info-link">Explore Bird Species →</router-link>
-            </div>
-          </transition>
         </div>
       </div>
     </section>
@@ -163,7 +167,6 @@
     <section class="cta-section">
       <router-link to="/plantadvice" class="btn btn-large">Let's Build Your Backyard</router-link>
     </section>
-
     <!-- Grow in 4 Steps Section -->
     <section class="steps-section">
       <div class="container">
@@ -226,14 +229,6 @@ export default defineComponent({
       showBirdInfo: false,
     }
   },
-  methods: {
-    closePlantInfo() {
-      this.showPlantInfo = false
-    },
-    closeBirdInfo() {
-      this.showBirdInfo = false
-    },
-  },
 })
 </script>
 
@@ -243,7 +238,7 @@ export default defineComponent({
   max-width: 1200px;
   top: 0;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 auto;
 }
 
 .btn {
@@ -412,205 +407,6 @@ export default defineComponent({
   margin-bottom: 10px;
   line-height: 1.6;
 }
-
-/* Info Section Styles - IMPROVED VERSION */
-.info-section {
-  padding: 80px 0;
-  background-color: #f9f9f9;
-}
-
-.info-title {
-  font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 50px;
-  color: #0a3200;
-}
-
-.info-card-container {
-  display: flex;
-  margin-bottom: 80px;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.birds-container {
-  flex-direction: row-reverse;
-}
-
-.info-card {
-  flex: 0 0 50%;
-  max-width: 580px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.card-image {
-  position: relative;
-  height: 580px;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.info-card:hover .card-image img {
-  transform: scale(1.05);
-}
-
-.card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(10, 50, 0, 0.8));
-  padding: 25px;
-  color: white;
-  transition: background 0.3s ease;
-}
-
-.card-overlay h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.learn-more {
-  display: inline-flex;
-  align-items: center;
-  font-weight: 600;
-  color: #c2e59c;
-  border-bottom: 2px solid #c2e59c;
-  padding-bottom: 2px;
-  transition: all 0.3s ease;
-}
-
-.learn-more::after {
-  content: '+';
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  transition: transform 0.3s ease;
-}
-
-.card-image:hover .card-overlay {
-  background: linear-gradient(transparent, rgba(10, 50, 0, 0.9));
-}
-
-.card-image:hover .learn-more {
-  transform: translateX(5px);
-}
-
-.card-image:hover .learn-more::after {
-  transform: rotate(90deg);
-}
-
-/* Info Panel Styles */
-.info-panel {
-  flex: 1;
-  background-color: #f0f0f0;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  position: relative;
-  border-left: 4px solid #c2e59c;
-}
-
-.info-panel-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 32px;
-  height: 32px;
-  background: rgba(10, 50, 0, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-  color: #0a3200;
-  font-size: 22px;
-}
-
-.info-panel-close:hover {
-  background: rgba(10, 50, 0, 0.2);
-  transform: rotate(90deg);
-}
-
-.info-panel h3 {
-  color: #0a3200;
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-}
-
-.info-panel h3:not(:first-child) {
-  margin-top: 25px;
-}
-
-.info-panel p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.info-panel ul {
-  margin-bottom: 20px;
-  padding-left: 20px;
-}
-
-.info-panel li {
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
-
-.info-link {
-  display: inline-block;
-  margin-top: 15px;
-  color: #0a3200;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 2px solid #c2e59c;
-  padding-bottom: 2px;
-  transition: all 0.3s ease;
-}
-
-.info-link:hover {
-  color: #4a7d32;
-  transform: translateX(5px);
-}
-
-/* Transition Animation */
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.4s ease;
-}
-
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
   .about-content {
@@ -622,25 +418,8 @@ export default defineComponent({
     grid-template-columns: 1fr;
   }
 
-  .info-card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .birds-container {
-    flex-direction: column;
-  }
-
-  .info-card {
-    flex: none;
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .info-panel {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -669,18 +448,10 @@ export default defineComponent({
     font-size: 1.8rem;
   }
 
-  .info-card {
-    width: 90%;
-    height: auto;
-  }
-
-  .card-image {
-    height: 350px;
-  }
-
-  .info-panel {
-    width: 90%;
-    padding: 25px 20px;
+  .footer-columns {
+    grid-template-columns: 1fr;
   }
 }
+
+/* Info Section Styles */
 </style>

@@ -62,7 +62,7 @@ main {
   flex: 1;
   width: 100%;
   max-width: 100%;
-  padding-top: 0; /* 为固定定位的header留出空间 */
+  padding-top: 80px; /* 为固定定位的header留出空间 */
 }
 
 h1,

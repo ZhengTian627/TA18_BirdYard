@@ -6,8 +6,6 @@ fetchRecommendedPlants(); });
     <div class="banner">
       <h1 class="banner-title">NATIVE PLANT SUGGESTIONS</h1>
       <p class="banner-subtitle">UNDERSTAND YOUR PLANT BASED ON YOUR CLIMATE</p>
-      <p class="banner-subtitle">INPUT YOUR LOCATION AND SEASON TO FIND PLANTS FOR YOU</p>
-      <p class="banner-subtitle">WE CAN HELP YOU IN VICTORA, SOUTH AUSTRALIA AND QUEENSLAND</p>
     </div>
 
     <!-- Search Section -->
@@ -504,18 +502,18 @@ export default {
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/garden.jpeg');
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 .banner-title {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
 }

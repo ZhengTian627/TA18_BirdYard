@@ -39,7 +39,7 @@
         </div>
       </div>
     </section>
-
+    <!-- Information Section with Modal Popups -->
     <!-- Information Section with Modal Popups -->
     <section class="info-section">
       <div class="container">
@@ -59,7 +59,6 @@
 
           <transition name="fade">
             <div class="info-panel" v-if="showPlantInfo">
-              <button class="info-panel-close" @click="closePlantInfo">&times;</button>
               <h3>Building a Thriving Ecosystem</h3>
               <p>Plants are the foundation of every healthy garden ecosystem. They provide:</p>
               <ul>
@@ -113,7 +112,6 @@
 
           <transition name="fade">
             <div class="info-panel" v-if="showBirdInfo">
-              <button class="info-panel-close" @click="closeBirdInfo">&times;</button>
               <h3>Creating a Bird Haven</h3>
               <p>
                 Birds need four essential things from your garden: food, water, shelter, and nesting
@@ -152,18 +150,16 @@
                 </li>
               </ul>
 
-              <router-link to="/birdguide" class="info-link">Explore Bird Species →</router-link>
+              <router-link to="/bird" class="info-link">Explore Bird Species →</router-link>
             </div>
           </transition>
         </div>
       </div>
     </section>
-
     <!-- Call to Action -->
     <section class="cta-section">
       <router-link to="/plantadvice" class="btn btn-large">Let's Build Your Backyard</router-link>
     </section>
-
     <!-- Grow in 4 Steps Section -->
     <section class="steps-section">
       <div class="container">
@@ -226,14 +222,6 @@ export default defineComponent({
       showBirdInfo: false,
     }
   },
-  methods: {
-    closePlantInfo() {
-      this.showPlantInfo = false
-    },
-    closeBirdInfo() {
-      this.showBirdInfo = false
-    },
-  },
 })
 </script>
 
@@ -243,7 +231,7 @@ export default defineComponent({
   max-width: 1200px;
   top: 0;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 auto;
 }
 
 .btn {
@@ -412,8 +400,8 @@ export default defineComponent({
   margin-bottom: 10px;
   line-height: 1.6;
 }
-
-/* Info Section Styles - IMPROVED VERSION */
+/* Info Section Styles */
+/* Info Section Styles */
 .info-section {
   padding: 80px 0;
   background-color: #f9f9f9;
@@ -439,8 +427,8 @@ export default defineComponent({
 
 .info-card {
   flex: 0 0 50%;
-  max-width: 580px;
-  border-radius: 12px;
+  max-width: 550px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition:
@@ -450,25 +438,19 @@ export default defineComponent({
 
 .info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
   position: relative;
-  height: 580px;
+  height: 550px;
   cursor: pointer;
-  overflow: hidden;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.info-card:hover .card-image img {
-  transform: scale(1.05);
 }
 
 .card-overlay {
@@ -477,33 +459,21 @@ export default defineComponent({
   left: 0;
   right: 0;
   background: linear-gradient(transparent, rgba(10, 50, 0, 0.8));
-  padding: 25px;
+  padding: 20px;
   color: white;
   transition: background 0.3s ease;
 }
 
 .card-overlay h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
 }
 
 .learn-more {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   font-weight: 600;
-  color: #c2e59c;
   border-bottom: 2px solid #c2e59c;
   padding-bottom: 2px;
-  transition: all 0.3s ease;
-}
-
-.learn-more::after {
-  content: '+';
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 18px;
-  font-weight: bold;
   transition: transform 0.3s ease;
 }
 
@@ -515,49 +485,20 @@ export default defineComponent({
   transform: translateX(5px);
 }
 
-.card-image:hover .learn-more::after {
-  transform: rotate(90deg);
-}
-
 /* Info Panel Styles */
 .info-panel {
   flex: 1;
   background-color: #f0f0f0;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  position: relative;
-  border-left: 4px solid #c2e59c;
-}
-
-.info-panel-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 32px;
-  height: 32px;
-  background: rgba(10, 50, 0, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-  color: #0a3200;
-  font-size: 22px;
-}
-
-.info-panel-close:hover {
-  background: rgba(10, 50, 0, 0.2);
-  transform: rotate(90deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .info-panel h3 {
   color: #0a3200;
   margin-top: 0;
   margin-bottom: 15px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .info-panel h3:not(:first-child) {
@@ -571,22 +512,20 @@ export default defineComponent({
 
 .info-panel ul {
   margin-bottom: 20px;
-  padding-left: 20px;
 }
 
 .info-panel li {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.6;
 }
 
 .info-link {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 10px;
   color: #0a3200;
   font-weight: 600;
   text-decoration: none;
   border-bottom: 2px solid #c2e59c;
-  padding-bottom: 2px;
   transition: all 0.3s ease;
 }
 
@@ -598,30 +537,143 @@ export default defineComponent({
 /* Transition Animation */
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
 }
 
-/* Responsive Design */
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 101;
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  background-color: white;
+  border-radius: 8px;
+  overflow-y: auto;
+  z-index: 102;
+}
+
+.modal-side-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100vh;
+  background-color: white;
+  overflow-y: auto;
+  z-index: 102;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.modal-header h2 {
+  color: #0a3200;
+  margin: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-content {
+  padding: 0;
+}
+
+.modal-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-text {
+  padding: 30px;
+}
+
+.modal-text h3 {
+  color: #0a3200;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.modal-text ul {
+  margin-bottom: 25px;
+}
+
+.modal-text li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.modal-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #0a3200;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #c2e59c;
+  transition: all 0.3s ease;
+}
+
+.modal-link:hover {
+  color: #4a7d32;
+  transform: translateX(5px);
+}
+
+/* Transition Animation */
+.slide-right-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-right-leave-active {
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.7, 1);
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Responsive Styles */
 @media (max-width: 992px) {
-  .about-content {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .steps-container {
-    grid-template-columns: 1fr;
-  }
-
   .info-card-container {
     flex-direction: column;
     align-items: center;
@@ -641,6 +693,32 @@ export default defineComponent({
     width: 100%;
     max-width: 500px;
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    width: 90%;
+  }
+
+  .info-panel {
+    width: 90%;
+    padding: 20px;
+  }
+}
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -669,18 +747,26 @@ export default defineComponent({
     font-size: 1.8rem;
   }
 
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .info-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .info-card {
-    width: 90%;
-    height: auto;
+    width: 100%;
   }
 
-  .card-image {
-    height: 350px;
+  .modal-content {
+    flex-direction: column;
   }
 
-  .info-panel {
-    width: 90%;
-    padding: 25px 20px;
+  .modal-image {
+    height: 200px;
   }
 }
 </style>

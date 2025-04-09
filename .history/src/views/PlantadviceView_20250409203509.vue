@@ -504,14 +504,14 @@ export default {
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/garden.jpeg');
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 .banner-title {

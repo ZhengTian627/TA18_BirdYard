@@ -511,13 +511,13 @@ export default {
   align-items: center;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 .banner-title {
   font-size: 3.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .banner-subtitle {
