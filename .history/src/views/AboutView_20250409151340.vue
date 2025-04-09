@@ -93,7 +93,7 @@
             <p>AI developer</p>
           </div>
           <div class="team-member">
-            <div class="member-photo"><img src="@/assets/images/kunal.png" alt="Kunal" /></div>
+            <div class="member-photo"><img src="@/assets/images/Kunal.png" alt="Kunal" /></div>
             <h3>Kunal</h3>
             <p>MBIS</p>
           </div>
