@@ -73,17 +73,13 @@
       <h2 class="section-title">Our Conservation Partners</h2>
       <div class="partners-grid">
         <div class="partner-item">
-          <img src="../assets/images/partner1.png" alt="BirdLife Australia" class="partner-logo" />
+          <img src="../assets/images/logo.png" alt="BirdLife Australia" class="partner-logo" />
         </div>
         <div class="partner-item">
-          <img src="../assets/images/partner2.png" alt="World Wildlife Fund" class="partner-logo" />
+          <img src="../assets/images/logo.png" alt="World Wildlife Fund" class="partner-logo" />
         </div>
         <div class="partner-item">
-          <img
-            src="../assets/images/partner3.png"
-            alt="Conservation Australia"
-            class="partner-logo"
-          />
+          <img src="../assets/images/logo.png" alt="Conservation Australia" class="partner-logo" />
         </div>
       </div>
     </section>

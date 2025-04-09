@@ -73,17 +73,38 @@
       <h2 class="section-title">Our Conservation Partners</h2>
       <div class="partners-grid">
         <div class="partner-item">
-          <img src="../assets/images/partner1.png" alt="BirdLife Australia" class="partner-logo" />
+          <img src="../assets/images/logo.png" alt="BirdLife Australia" class="partner-logo" />
         </div>
         <div class="partner-item">
-          <img src="../assets/images/partner2.png" alt="World Wildlife Fund" class="partner-logo" />
+          <img src="../assets/images/logo.png" alt="World Wildlife Fund" class="partner-logo" />
         </div>
         <div class="partner-item">
-          <img
-            src="../assets/images/partner3.png"
-            alt="Conservation Australia"
-            class="partner-logo"
-          />
+          <img src="../assets/images/logo.png" alt="Conservation Australia" class="partner-logo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-container">
+        <div class="newsletter-content">
+          <h2 class="newsletter-title">Stay Updated</h2>
+          <p class="newsletter-text">
+            Subscribe to our newsletter for bird identification tips, conservation news, and updates
+            on new features.
+          </p>
+          <div class="newsletter-form">
+            <input
+              type="email"
+              placeholder="Your email address"
+              class="newsletter-input"
+              disabled
+            />
+            <button class="newsletter-button" disabled>Subscribe</button>
+          </div>
+          <p class="newsletter-note">
+            * This form is currently disabled as it's just a display example.
+          </p>
         </div>
       </div>
     </section>
@@ -265,6 +286,69 @@ export default {
 .partner-logo:hover {
   opacity: 1;
 }
+
+/* Newsletter Section */
+.newsletter-section {
+  padding: 80px 5%;
+  background-color: #1a2d00;
+}
+
+.newsletter-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-title {
+  font-size: 2rem;
+  color: #f3f9c0;
+  margin-bottom: 20px;
+}
+
+.newsletter-text {
+  color: #fff;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.newsletter-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 15px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+}
+
+.newsletter-button {
+  background-color: #f3f9c0;
+  color: #1a2d00;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+  background-color: #fff;
+}
+
+.newsletter-note {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-title {

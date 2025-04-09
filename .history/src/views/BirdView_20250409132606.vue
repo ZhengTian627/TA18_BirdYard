@@ -36,70 +36,67 @@
       </div>
     </section>
 
-    <!-- Detection Results Modal (replaces the results section) -->
-    <div v-if="previewUrl" class="detection-modal-overlay" @click="closeDetectionModal">
-      <div class="detection-modal" @click.stop>
-        <button class="modal-close-button" @click="closeDetectionModal">&times;</button>
+    <!-- Results Section (Only visible after upload) -->
+    <section class="results-section" v-if="previewUrl">
+      <div class="results-container">
+        <div class="results-grid">
+          <!-- Image Preview Column -->
+          <div class="image-preview-column">
+            <div class="preview-wrapper">
+              <img
+                :src="previewUrl"
+                alt="Bird image preview"
+                class="preview-image"
+                ref="previewImage"
+              />
+              <div v-if="result" class="detection-box" :style="getBoundingBoxStyle()"></div>
+            </div>
+          </div>
 
-        <div class="detection-modal-content">
-          <div class="detection-grid">
-            <!-- Image Preview Column -->
-            <div class="detection-image-column">
-              <div class="detection-preview-wrapper">
-                <img
-                  :src="previewUrl"
-                  alt="Bird image preview"
-                  class="detection-preview-image"
-                  ref="previewImage"
-                />
-                <div v-if="result" class="detection-box" :style="getBoundingBoxStyle()"></div>
+          <!-- Results Column -->
+          <div class="results-details-column">
+            <div v-if="result" class="results-card">
+              <h2 class="results-heading">Detection Results</h2>
+              <div class="result-item">
+                <span class="result-label">Species:</span>
+                <span class="result-value">{{ result.class_name }}</span>
               </div>
+              <div class="result-item">
+                <span class="result-label">Confidence:</span>
+                <span class="result-value">{{ (result.confidence * 100).toFixed(2) }}%</span>
+              </div>
+              <p class="results-description">
+                We've detected this bird species in your image. Learn more about how to attract and
+                support this species in your garden.
+              </p>
+              <router-link to="/plantadvice" class="secondary-button"
+                >Find Suitable Plants</router-link
+              >
             </div>
 
-            <!-- Results Column -->
-            <div class="detection-details-column">
-              <div v-if="result" class="detection-results-card">
-                <h2 class="detection-heading">Detection Results</h2>
-                <div class="detection-result-item">
-                  <span class="detection-result-label">Species:</span>
-                  <span class="detection-result-value">{{ result.class_name }}</span>
-                </div>
-                <div class="detection-result-item">
-                  <span class="detection-result-label">Confidence:</span>
-                  <span class="detection-result-value"
-                    >{{ (result.confidence * 100).toFixed(2) }}%</span
-                  >
-                </div>
-                <p class="detection-description">
-                  We've detected this bird species in your image. Learn more about how to attract
-                  and support this species in your garden.
-                </p>
-                <router-link to="/plantadvice" class="secondary-button"
-                  >Find Suitable Plants</router-link
-                >
-              </div>
+            <div v-else-if="isLoading" class="processing-message">
+              <div class="loading-spinner"></div>
+              <p>Analyzing your image...</p>
+              <p class="processing-subtext">
+                Our AI is identifying bird species and characteristics
+              </p>
+            </div>
 
-              <div v-else-if="isLoading" class="detection-processing-message">
-                <div class="loading-spinner"></div>
-                <p>Analyzing your image...</p>
-                <p class="processing-subtext">
-                  Our AI is identifying bird species and characteristics
-                </p>
-              </div>
-
-              <div v-else class="detection-upload-success-message">
-                <h3>Image uploaded successfully!</h3>
-                <p>We're analyzing your photo to identify the bird species.</p>
-              </div>
-
-              <div v-if="error" class="detection-error-message">
-                {{ error }}
-              </div>
+            <div v-else class="upload-success-message">
+              <h3>Image uploaded successfully!</h3>
+              <p>We're analyzing your photo to identify the bird species.</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Error Message Section -->
+    <section class="error-section" v-if="error">
+      <div class="error-message">
+        {{ error }}
+      </div>
+    </section>
 
     <!-- Endangered Birds Section (NEW) -->
     <section class="endangered-birds-section">
@@ -110,46 +107,11 @@
           about each bird.
         </p>
 
-        <!-- State Filter Buttons -->
-        <div class="state-filter-container">
-          <div class="state-filter-label">Endangered Birds in State:</div>
-          <div class="state-filter-buttons">
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'South Australia' }"
-              @click="setStateFilter('South Australia')"
-            >
-              South Australia
-            </button>
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'Victoria' }"
-              @click="setStateFilter('Victoria')"
-            >
-              Victoria
-            </button>
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'Queensland' }"
-              @click="setStateFilter('Queensland')"
-            >
-              Queensland
-            </button>
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'Other' }"
-              @click="setStateFilter('Other')"
-            >
-              Other Regions
-            </button>
-          </div>
-        </div>
-
         <!-- Horizontal Scrolling Bird Cards -->
         <div class="bird-cards-scrollable-container">
           <div class="bird-cards-container">
             <div
-              v-for="bird in filteredBirds"
+              v-for="bird in endangeredBirds"
               :key="bird.id"
               class="bird-card"
               @click="selectBird(bird)"
@@ -287,7 +249,7 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import endangeredBirdsData from '@/assets/data/endangered-birds.json'
 
@@ -301,38 +263,10 @@ export default {
     const previewImage = ref(null)
     const endangeredBirds = ref([])
     const selectedBird = ref(null)
-    const selectedState = ref('Victoria')
 
     onMounted(() => {
       endangeredBirds.value = endangeredBirdsData
-
-      // Get default state from localStorage
-      const storedState = localStorage.getItem('selectedState')
-      if (
-        storedState &&
-        ['Victoria', 'South Australia', 'Queensland', 'Other'].includes(storedState)
-      ) {
-        selectedState.value = storedState
-      } else {
-        // default Victoria
-        selectedState.value = 'Victoria'
-        localStorage.setItem('selectedState', 'Victoria')
-      }
     })
-
-    // Filter birds based on selected state
-    const filteredBirds = computed(() => {
-      return endangeredBirds.value.filter((bird) => {
-        const locations = bird.location.split(',').map((loc) => loc.trim())
-        return locations.includes(selectedState.value)
-      })
-    })
-
-    // Set state filter and save to localStorage
-    const setStateFilter = (state) => {
-      selectedState.value = state
-      localStorage.setItem('selectedState', state)
-    }
 
     /**
      * Upload image for bird species detection
@@ -350,7 +284,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://52.65.202.39:8000/predict/'
+        const apiUrl = 'http://3.26.98.65:8000/predict/'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {
@@ -408,16 +342,6 @@ export default {
         }
       }
       img.src = previewUrl.value
-
-      // Prevent scrolling when modal is open
-      document.body.style.overflow = 'hidden'
-    }
-
-    const closeDetectionModal = () => {
-      previewUrl.value = ''
-      result.value = null
-      error.value = ''
-      document.body.style.overflow = '' // Restore scrolling
     }
 
     const getBoundingBoxStyle = () => {
@@ -443,8 +367,7 @@ export default {
 
     // Endangered birds section functions
     const getBirdImagePath = (filename) => {
-      // 直接使用相对路径引用图片
-      return new URL(`../assets/images/${filename}`, import.meta.url).href
+      return require(`@/assets/images/${filename}`)
     }
 
     const truncateText = (text, maxLength) => {
@@ -486,17 +409,13 @@ export default {
       getBoundingBoxStyle,
       previewImage,
       endangeredBirds,
-      filteredBirds,
       selectedBird,
-      selectedState,
       getBirdImagePath,
       truncateText,
       getStatusClass,
       getStatusShort,
       selectBird,
       closeModal,
-      closeDetectionModal,
-      setStateFilter,
     }
   },
 }
@@ -583,49 +502,29 @@ export default {
   display: none;
 }
 
-/* Detection Modal Styles */
-.detection-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
+/* Results Section Styles */
+.results-section {
+  padding: 80px 10%;
+  background-color: #f8f9fa;
 }
 
-.detection-modal {
-  background-color: white;
-  border-radius: 12px;
-  width: 90%;
+.results-container {
   max-width: 1200px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  animation: modalFadeIn 0.3s ease;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
 }
 
-.detection-modal-content {
-  padding: 30px;
-}
-
-.detection-grid {
+.results-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
 
-.detection-image-column {
+.image-preview-column {
   position: relative;
 }
 
-.detection-preview-wrapper {
+.preview-wrapper {
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
@@ -633,25 +532,45 @@ export default {
   background-color: #fff;
 }
 
-.detection-preview-image {
+.preview-image {
   width: 100%;
   display: block;
 }
 
-.detection-details-column {
+.detection-box {
+  position: absolute;
+  border: 3px solid #ff6b6b;
+  box-sizing: border-box;
+  pointer-events: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+}
+
+.results-details-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.detection-results-card {
+.results-card {
   background-color: #fff;
   border-radius: 8px;
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.detection-heading {
+.results-heading {
   color: #1a2d00;
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -659,30 +578,47 @@ export default {
   padding-bottom: 0.5rem;
 }
 
-.detection-result-item {
+.result-item {
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
 
-.detection-result-label {
+.result-label {
   font-weight: 600;
   color: #555;
   display: inline-block;
   width: 100px;
 }
 
-.detection-result-value {
+.result-value {
   font-weight: 500;
   color: #1a2d00;
 }
 
-.detection-description {
+.results-description {
   margin: 1.5rem 0;
   color: #666;
   line-height: 1.6;
 }
 
-.detection-processing-message {
+.secondary-button {
+  display: inline-block;
+  background-color: #1a2d00;
+  color: #f3f9c0;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.secondary-button:hover {
+  background-color: #2c4b00;
+  transform: translateY(-2px);
+}
+
+.processing-message {
   text-align: center;
   padding: 40px;
   background-color: #fff;
@@ -690,7 +626,33 @@ export default {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.detection-upload-success-message {
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f9c0;
+  border-radius: 50%;
+  border-top-color: #1a2d00;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.processing-subtext {
+  color: #777;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.upload-success-message {
   text-align: center;
   padding: 40px;
   background-color: #fff;
@@ -698,62 +660,24 @@ export default {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.detection-upload-success-message h3 {
+.upload-success-message h3 {
   color: #1a2d00;
   margin-bottom: 1rem;
 }
 
-.detection-error-message {
-  margin-top: 20px;
+/* Error Section */
+.error-section {
+  padding: 20px 10%;
+  text-align: center;
+}
+
+.error-message {
+  display: inline-block;
   color: #fff;
   background-color: #ff6b6b;
   padding: 15px 30px;
   border-radius: 8px;
   font-weight: 500;
-  text-align: center;
-}
-
-/* State Filter Styles */
-.state-filter-container {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.state-filter-label {
-  font-size: 1.1rem;
-  color: #1a2d00;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.state-filter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.state-filter-button {
-  padding: 8px 16px;
-  background-color: #f2f2f2;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #555;
-  transition: all 0.3s ease;
-}
-
-.state-filter-button:hover {
-  background-color: #e6e6e6;
-  color: #333;
-}
-
-.state-filter-button.active {
-  background-color: #1a2d00;
-  color: #f3f9c0;
-  border-color: #1a2d00;
 }
 
 /* Endangered Birds Section Styles */
@@ -1131,7 +1055,7 @@ export default {
     font-size: 2.5rem;
   }
 
-  .detection-grid {
+  .results-grid {
     grid-template-columns: 1fr;
   }
 

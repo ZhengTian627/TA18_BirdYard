@@ -37,7 +37,7 @@ const router = createRouter({
     {
       path: '/plant/:plantName',
       name: 'PlantDetail',
-      component: PlantDetailView,
+      component: PlantadviceView,
       props: true,
     },
   ],

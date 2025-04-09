@@ -112,7 +112,7 @@
 
         <!-- State Filter Buttons -->
         <div class="state-filter-container">
-          <div class="state-filter-label">Endangered Birds in State:</div>
+          <div class="state-filter-label">Filter by State:</div>
           <div class="state-filter-buttons">
             <button
               class="state-filter-button"
@@ -301,7 +301,7 @@ export default {
     const previewImage = ref(null)
     const endangeredBirds = ref([])
     const selectedBird = ref(null)
-    const selectedState = ref('Victoria')
+    const selectedState = ref('All')
 
     onMounted(() => {
       endangeredBirds.value = endangeredBirdsData
@@ -310,20 +310,20 @@ export default {
       const storedState = localStorage.getItem('selectedState')
       if (
         storedState &&
-        ['Victoria', 'South Australia', 'Queensland', 'Other'].includes(storedState)
+        ['South Australia', 'Victoria', 'Queensland', 'Other'].includes(storedState)
       ) {
         selectedState.value = storedState
       } else {
-        // default Victoria
-        selectedState.value = 'Victoria'
-        localStorage.setItem('selectedState', 'Victoria')
+        // Default to South Australia if no valid state is stored
+        selectedState.value = 'South Australia'
+        localStorage.setItem('selectedState', 'South Australia')
       }
     })
 
     // Filter birds based on selected state
     const filteredBirds = computed(() => {
       return endangeredBirds.value.filter((bird) => {
-        const locations = bird.location.split(',').map((loc) => loc.trim())
+        const locations = bird.location.split(',')
         return locations.includes(selectedState.value)
       })
     })
@@ -350,7 +350,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://52.65.202.39:8000/predict/'
+        const apiUrl = 'http://3.26.98.65:8000/predict/'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {

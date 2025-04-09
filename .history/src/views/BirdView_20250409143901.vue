@@ -40,7 +40,7 @@
     <div v-if="previewUrl" class="detection-modal-overlay" @click="closeDetectionModal">
       <div class="detection-modal" @click.stop>
         <button class="modal-close-button" @click="closeDetectionModal">&times;</button>
-
+        
         <div class="detection-modal-content">
           <div class="detection-grid">
             <!-- Image Preview Column -->
@@ -66,13 +66,11 @@
                 </div>
                 <div class="detection-result-item">
                   <span class="detection-result-label">Confidence:</span>
-                  <span class="detection-result-value"
-                    >{{ (result.confidence * 100).toFixed(2) }}%</span
-                  >
+                  <span class="detection-result-value">{{ (result.confidence * 100).toFixed(2) }}%</span>
                 </div>
                 <p class="detection-description">
-                  We've detected this bird species in your image. Learn more about how to attract
-                  and support this species in your garden.
+                  We've detected this bird species in your image. Learn more about how to attract and
+                  support this species in your garden.
                 </p>
                 <router-link to="/plantadvice" class="secondary-button"
                   >Find Suitable Plants</router-link
@@ -91,7 +89,7 @@
                 <h3>Image uploaded successfully!</h3>
                 <p>We're analyzing your photo to identify the bird species.</p>
               </div>
-
+              
               <div v-if="error" class="detection-error-message">
                 {{ error }}
               </div>
@@ -106,37 +104,36 @@
       <div class="section-container">
         <h2 class="section-title">Endangered Australian Birds</h2>
         <p class="section-subtitle">
-          Discover these rare and threatened species that need our protection. Swipe to learn more
-          about each bird.
+          Discover these rare and threatened species that need our protection. Swipe to learn more about each bird.
         </p>
-
+        
         <!-- State Filter Buttons -->
         <div class="state-filter-container">
-          <div class="state-filter-label">Endangered Birds in State:</div>
+          <div class="state-filter-label">Filter by State:</div>
           <div class="state-filter-buttons">
-            <button
-              class="state-filter-button"
+            <button 
+              class="state-filter-button" 
               :class="{ active: selectedState === 'South Australia' }"
               @click="setStateFilter('South Australia')"
             >
               South Australia
             </button>
-            <button
-              class="state-filter-button"
+            <button 
+              class="state-filter-button" 
               :class="{ active: selectedState === 'Victoria' }"
               @click="setStateFilter('Victoria')"
             >
               Victoria
             </button>
-            <button
-              class="state-filter-button"
+            <button 
+              class="state-filter-button" 
               :class="{ active: selectedState === 'Queensland' }"
               @click="setStateFilter('Queensland')"
             >
               Queensland
             </button>
-            <button
-              class="state-filter-button"
+            <button 
+              class="state-filter-button" 
               :class="{ active: selectedState === 'Other' }"
               @click="setStateFilter('Other')"
             >
@@ -148,9 +145,9 @@
         <!-- Horizontal Scrolling Bird Cards -->
         <div class="bird-cards-scrollable-container">
           <div class="bird-cards-container">
-            <div
-              v-for="bird in filteredBirds"
-              :key="bird.id"
+            <div 
+              v-for="bird in filteredBirds" 
+              :key="bird.id" 
               class="bird-card"
               @click="selectBird(bird)"
             >
@@ -158,7 +155,11 @@
                 <div class="bird-status-badge" :class="getStatusClass(bird.status)">
                   {{ getStatusShort(bird.status) }}
                 </div>
-                <img :src="getBirdImagePath(bird.image)" :alt="bird.name" class="bird-card-image" />
+                <img 
+                  :src="getBirdImagePath(bird.image)" 
+                  :alt="bird.name" 
+                  class="bird-card-image"
+                />
               </div>
               <div class="bird-card-content">
                 <h3 class="bird-card-title">{{ bird.name }}</h3>
@@ -173,32 +174,32 @@
         <div v-if="selectedBird" class="bird-modal-overlay" @click="closeModal">
           <div class="bird-modal" @click.stop>
             <button class="modal-close-button" @click="closeModal">&times;</button>
-
+            
             <div class="bird-modal-header">
               <div class="bird-modal-image-container">
-                <img
-                  :src="getBirdImagePath(selectedBird.image)"
-                  :alt="selectedBird.name"
+                <img 
+                  :src="getBirdImagePath(selectedBird.image)" 
+                  :alt="selectedBird.name" 
                   class="bird-modal-image"
                 />
                 <div class="bird-status-badge-large" :class="getStatusClass(selectedBird.status)">
                   {{ selectedBird.status }}
                 </div>
               </div>
-
+              
               <div class="bird-modal-title-container">
                 <h2 class="bird-modal-title">{{ selectedBird.name }}</h2>
                 <p class="bird-modal-scientific-name">{{ selectedBird.scientificName }}</p>
                 <p class="bird-modal-family">Family: {{ selectedBird.family }}</p>
               </div>
             </div>
-
+            
             <div class="bird-modal-content">
               <div class="bird-info-section">
                 <h3 class="bird-info-title">Overview</h3>
                 <p>{{ selectedBird.overview }}</p>
               </div>
-
+              
               <div class="bird-info-grid">
                 <div class="bird-info-column">
                   <div class="bird-info-section">
@@ -206,15 +207,11 @@
                     <div class="bird-info-list">
                       <div class="bird-info-item">
                         <span class="bird-info-label">Size:</span>
-                        <span class="bird-info-value">{{
-                          selectedBird.size || 'Not specified'
-                        }}</span>
+                        <span class="bird-info-value">{{ selectedBird.size || 'Not specified' }}</span>
                       </div>
                       <div class="bird-info-item">
                         <span class="bird-info-label">Weight:</span>
-                        <span class="bird-info-value">{{
-                          selectedBird.weight || 'Not specified'
-                        }}</span>
+                        <span class="bird-info-value">{{ selectedBird.weight || 'Not specified' }}</span>
                       </div>
                       <div class="bird-info-item">
                         <span class="bird-info-label">Identification:</span>
@@ -222,7 +219,7 @@
                       </div>
                     </div>
                   </div>
-
+                  
                   <div class="bird-info-section">
                     <h3 class="bird-info-title">Habitat & Location</h3>
                     <div class="bird-info-list">
@@ -237,7 +234,7 @@
                     </div>
                   </div>
                 </div>
-
+                
                 <div class="bird-info-column">
                   <div class="bird-info-section">
                     <h3 class="bird-info-title">Behaviour & Diet</h3>
@@ -252,7 +249,7 @@
                       </div>
                     </div>
                   </div>
-
+                  
                   <div class="bird-info-section">
                     <h3 class="bird-info-title">Conservation</h3>
                     <div class="bird-info-list">
@@ -268,13 +265,9 @@
                   </div>
                 </div>
               </div>
-
+              
               <div class="bird-conservation-cta">
-                <a
-                  href="https://birdlife.org.au/campaign/nature-laws/"
-                  target="_blank"
-                  class="conservation-button"
-                >
+                <a href="https://birdlife.org.au/campaign/nature-laws/" target="_blank" class="conservation-button">
                   Help Protect These Birds
                 </a>
               </div>
@@ -301,33 +294,30 @@ export default {
     const previewImage = ref(null)
     const endangeredBirds = ref([])
     const selectedBird = ref(null)
-    const selectedState = ref('Victoria')
+    const selectedState = ref('All')
 
     onMounted(() => {
       endangeredBirds.value = endangeredBirdsData
-
+      
       // Get default state from localStorage
       const storedState = localStorage.getItem('selectedState')
-      if (
-        storedState &&
-        ['Victoria', 'South Australia', 'Queensland', 'Other'].includes(storedState)
-      ) {
+      if (storedState && ['South Australia', 'Victoria', 'Queensland', 'Other'].includes(storedState)) {
         selectedState.value = storedState
       } else {
-        // default Victoria
-        selectedState.value = 'Victoria'
-        localStorage.setItem('selectedState', 'Victoria')
+        // Default to South Australia if no valid state is stored
+        selectedState.value = 'South Australia'
+        localStorage.setItem('selectedState', 'South Australia')
       }
     })
-
+    
     // Filter birds based on selected state
     const filteredBirds = computed(() => {
-      return endangeredBirds.value.filter((bird) => {
-        const locations = bird.location.split(',').map((loc) => loc.trim())
+      return endangeredBirds.value.filter(bird => {
+        const locations = bird.location.split(',')
         return locations.includes(selectedState.value)
       })
     })
-
+    
     // Set state filter and save to localStorage
     const setStateFilter = (state) => {
       selectedState.value = state
@@ -350,7 +340,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://52.65.202.39:8000/predict/'
+        const apiUrl = 'http://3.26.98.65:8000/predict/'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {
@@ -408,11 +398,11 @@ export default {
         }
       }
       img.src = previewUrl.value
-
+      
       // Prevent scrolling when modal is open
       document.body.style.overflow = 'hidden'
     }
-
+    
     const closeDetectionModal = () => {
       previewUrl.value = ''
       result.value = null
@@ -496,7 +486,7 @@ export default {
       selectBird,
       closeModal,
       closeDetectionModal,
-      setStateFilter,
+      setStateFilter
     }
   },
 }
@@ -1130,26 +1120,26 @@ export default {
   .hero-title {
     font-size: 2.5rem;
   }
-
+  
   .detection-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .bird-modal-header {
     flex-direction: column;
     align-items: center;
   }
-
+  
   .bird-modal-image-container {
     flex: 0 0 auto;
     width: 100%;
     max-width: 300px;
   }
-
+  
   .bird-modal-title-container {
     text-align: center;
   }
-
+  
   .bird-info-grid {
     grid-template-columns: 1fr;
   }
@@ -1173,11 +1163,11 @@ export default {
   .feature-item {
     justify-content: center;
   }
-
+  
   .bird-card {
     width: 260px;
   }
-
+  
   .bird-card-image-container {
     height: 180px;
   }
@@ -1187,13 +1177,12 @@ export default {
   .bird-card {
     width: 220px;
   }
-
+  
   .bird-card-image-container {
     height: 150px;
   }
-
+  
   .section-title {
     font-size: 2rem;
   }
 }
-</style>

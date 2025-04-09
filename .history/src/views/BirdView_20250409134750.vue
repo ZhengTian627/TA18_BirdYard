@@ -110,46 +110,11 @@
           about each bird.
         </p>
 
-        <!-- State Filter Buttons -->
-        <div class="state-filter-container">
-          <div class="state-filter-label">Endangered Birds in State:</div>
-          <div class="state-filter-buttons">
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'South Australia' }"
-              @click="setStateFilter('South Australia')"
-            >
-              South Australia
-            </button>
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'Victoria' }"
-              @click="setStateFilter('Victoria')"
-            >
-              Victoria
-            </button>
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'Queensland' }"
-              @click="setStateFilter('Queensland')"
-            >
-              Queensland
-            </button>
-            <button
-              class="state-filter-button"
-              :class="{ active: selectedState === 'Other' }"
-              @click="setStateFilter('Other')"
-            >
-              Other Regions
-            </button>
-          </div>
-        </div>
-
         <!-- Horizontal Scrolling Bird Cards -->
         <div class="bird-cards-scrollable-container">
           <div class="bird-cards-container">
             <div
-              v-for="bird in filteredBirds"
+              v-for="bird in endangeredBirds"
               :key="bird.id"
               class="bird-card"
               @click="selectBird(bird)"
@@ -287,7 +252,7 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import endangeredBirdsData from '@/assets/data/endangered-birds.json'
 
@@ -301,38 +266,10 @@ export default {
     const previewImage = ref(null)
     const endangeredBirds = ref([])
     const selectedBird = ref(null)
-    const selectedState = ref('Victoria')
 
     onMounted(() => {
       endangeredBirds.value = endangeredBirdsData
-
-      // Get default state from localStorage
-      const storedState = localStorage.getItem('selectedState')
-      if (
-        storedState &&
-        ['Victoria', 'South Australia', 'Queensland', 'Other'].includes(storedState)
-      ) {
-        selectedState.value = storedState
-      } else {
-        // default Victoria
-        selectedState.value = 'Victoria'
-        localStorage.setItem('selectedState', 'Victoria')
-      }
     })
-
-    // Filter birds based on selected state
-    const filteredBirds = computed(() => {
-      return endangeredBirds.value.filter((bird) => {
-        const locations = bird.location.split(',').map((loc) => loc.trim())
-        return locations.includes(selectedState.value)
-      })
-    })
-
-    // Set state filter and save to localStorage
-    const setStateFilter = (state) => {
-      selectedState.value = state
-      localStorage.setItem('selectedState', state)
-    }
 
     /**
      * Upload image for bird species detection
@@ -350,7 +287,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://52.65.202.39:8000/predict/'
+        const apiUrl = 'http://3.26.98.65:8000/predict/'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {
@@ -486,9 +423,7 @@ export default {
       getBoundingBoxStyle,
       previewImage,
       endangeredBirds,
-      filteredBirds,
       selectedBird,
-      selectedState,
       getBirdImagePath,
       truncateText,
       getStatusClass,
@@ -496,7 +431,6 @@ export default {
       selectBird,
       closeModal,
       closeDetectionModal,
-      setStateFilter,
     }
   },
 }
@@ -711,49 +645,6 @@ export default {
   border-radius: 8px;
   font-weight: 500;
   text-align: center;
-}
-
-/* State Filter Styles */
-.state-filter-container {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.state-filter-label {
-  font-size: 1.1rem;
-  color: #1a2d00;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.state-filter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.state-filter-button {
-  padding: 8px 16px;
-  background-color: #f2f2f2;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #555;
-  transition: all 0.3s ease;
-}
-
-.state-filter-button:hover {
-  background-color: #e6e6e6;
-  color: #333;
-}
-
-.state-filter-button.active {
-  background-color: #1a2d00;
-  color: #f3f9c0;
-  border-color: #1a2d00;
 }
 
 /* Endangered Birds Section Styles */

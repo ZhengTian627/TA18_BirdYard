@@ -112,7 +112,7 @@
 
         <!-- State Filter Buttons -->
         <div class="state-filter-container">
-          <div class="state-filter-label">Endangered Birds in State:</div>
+          <div class="state-filter-label">Filter by State:</div>
           <div class="state-filter-buttons">
             <button
               class="state-filter-button"
@@ -306,24 +306,17 @@ export default {
     onMounted(() => {
       endangeredBirds.value = endangeredBirdsData
 
-      // Get default state from localStorage
+      // 获取localStorage中保存的state
       const storedState = localStorage.getItem('selectedState')
-      if (
-        storedState &&
-        ['Victoria', 'South Australia', 'Queensland', 'Other'].includes(storedState)
-      ) {
+      if (storedState && storedState !== 'All') {
         selectedState.value = storedState
-      } else {
-        // default Victoria
-        selectedState.value = 'Victoria'
-        localStorage.setItem('selectedState', 'Victoria')
       }
     })
 
     // Filter birds based on selected state
     const filteredBirds = computed(() => {
       return endangeredBirds.value.filter((bird) => {
-        const locations = bird.location.split(',').map((loc) => loc.trim())
+        const locations = bird.location.split(',')
         return locations.includes(selectedState.value)
       })
     })
@@ -350,7 +343,7 @@ export default {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://52.65.202.39:8000/predict/'
+        const apiUrl = 'http://3.26.98.65:8000/predict/'
 
         // Configure CORS settings
         const response = await axios.post(apiUrl, formData, {

@@ -114,20 +114,15 @@ fetchRecommendedPlants(); });
         </div>
 
         <div v-else class="plants-grid">
-          <router-link
-            v-for="(plant, index) in recommendedPlants"
-            :key="index"
-            :to="{ name: 'PlantDetail', params: { plantName: plant.plantName } }"
-            class="plant-card"
-          >
+          <div v-for="(plant, index) in recommendedPlants" :key="index" class="plant-card">
             <div class="plant-image">
-              <img :src="getPlantImage(plant)" :alt="plant.plantName" @error="handleImageError" />
+              <img :src="getPlantImage(plant)" :alt="plant.name" @error="handleImageError" />
             </div>
             <div class="plant-info">
               <h3>{{ plant.plantName }}</h3>
               <p>{{ plant.description }}</p>
             </div>
-          </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -191,7 +186,7 @@ export default {
     const address = ref('')
     const suggestions = ref([])
     const selectedLocation = ref(null)
-    const selectedState = ref(localStorage.getItem('selectedState') || 'Victoria')
+    const selectedState = ref('Victoria') // Default to Victoria
     const selectedSeason = ref(getCurrentSeason()) // Default to current season
     const recommendedPlants = ref([])
     const loading = ref(false)
@@ -318,13 +313,10 @@ export default {
 
       if (addressLower.includes('queensland') || addressLower.includes('qld')) {
         selectedState.value = 'Queensland'
-        localStorage.setItem('selectedState', selectedState.value)
       } else if (addressLower.includes('victoria') || addressLower.includes('vic')) {
         selectedState.value = 'Victoria'
-        localStorage.setItem('selectedState', selectedState.value)
       } else if (addressLower.includes('south australia') || addressLower.includes('sa')) {
         selectedState.value = 'South Australia'
-        localStorage.setItem('selectedState', selectedState.value)
       } else {
         // Try to determine the state using reverse geocoding if not found in address
         try {

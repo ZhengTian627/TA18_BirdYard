@@ -4,7 +4,6 @@ import ContactView from '@/views/ContactView.vue'
 import AboutView from '../views/AboutView.vue'
 import PlantadviceView from '@/views/PlantadviceView.vue'
 import BirdView from '@/views/BirdView.vue'
-import PlantDetailView from '@/views/PlantDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,12 +32,6 @@ const router = createRouter({
       path: '/bird',
       name: 'bird',
       component: BirdView,
-    },
-    {
-      path: '/plant/:plantName',
-      name: 'PlantDetail',
-      component: PlantDetailView,
-      props: true,
     },
   ],
 })

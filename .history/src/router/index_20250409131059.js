@@ -37,7 +37,7 @@ const router = createRouter({
     {
       path: '/plant/:plantName',
       name: 'PlantDetail',
-      component: PlantDetailView,
+      component: () => import('@/views/PlantDetailView.vue'),
       props: true,
     },
   ],
