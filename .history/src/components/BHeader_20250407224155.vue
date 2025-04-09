@@ -9,7 +9,7 @@
       </div>
       <nav class="nav-menu">
         <ul>
-          <li><router-link to="/home">HOME</router-link></li>
+          <li><router-link to="/">HOME</router-link></li>
           <li><router-link to="/about">ABOUT US</router-link></li>
           <li><router-link to="/contact">CONTACT US</router-link></li>
         </ul>
