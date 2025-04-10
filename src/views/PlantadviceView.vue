@@ -49,12 +49,11 @@ fetchRecommendedPlants(); });
           <h2>{{ selectedState }}</h2>
           <div class="state-info-content">
             <p>
-              The following plant recommendations are based on your location's weather, soil type,
-              and surrounding environment.
+              The following plant recommendations are based on your location's weather, and surrounding environment. 
+              
             </p>
             <p>
-              By matching the right plants to your region, we help you grow a garden that thrives
-              naturally—while creating a safe and welcoming space for local birds.
+              By matching the right plants to your region, we help you grow a garden that thrives naturally—while creating a safe and welcoming space for local birds.
             </p>
           </div>
         </div>
@@ -94,12 +93,10 @@ fetchRecommendedPlants(); });
 
           <div class="season-info" v-if="selectedSeason">
             <p>
-              The following plant recommendations are based on your location's weather, soil type,
-              and surrounding environment.
+              The following plant recommendations are based on your location's weather, and surrounding environment. 
             </p>
             <p>
-              By matching the right plants to your region, we help you grow a garden that thrives
-              naturally—while creating a safe and welcoming space for local birds.
+              By matching the right plants to your region, we help you grow a garden that thrives naturally—while creating a safe and welcoming space for local birds.
             </p>
           </div>
         </div>
@@ -134,7 +131,7 @@ fetchRecommendedPlants(); });
       </div>
     </div>
     <section class="cta-section">
-      <router-link to="/bird" class="btn btn-large">To see endangered?</router-link>
+      <router-link to="/bird" class="btn btn-large">Find your bird</router-link>
     </section>
   </div>
 </template>

@@ -95,7 +95,7 @@
           <div class="team-member">
             <div class="member-photo"><img src="@/assets/images/kunal.png" alt="Kunal" /></div>
             <h3>Kunal Gupta</h3>
-            <p>Prototype Designer</p>
+            <p>Business Analyst</p>
           </div>
         </div>
       </div>
@@ -248,7 +248,13 @@ export default {
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover .member-photo {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .member-photo img {

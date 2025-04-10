@@ -395,6 +395,8 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .step h3 {
@@ -491,20 +493,33 @@ export default defineComponent({
 .learn-more {
   display: inline-flex;
   align-items: center;
-  font-weight: 600;
-  color: #c2e59c;
-  border-bottom: 2px solid #c2e59c;
-  padding-bottom: 2px;
+  font-weight: 700;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4); 
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.95rem;
   transition: all 0.3s ease;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .learn-more::after {
   content: '+';
   display: inline-block;
   margin-left: 8px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   transition: transform 0.3s ease;
+}
+
+.card-image:hover .learn-more {
+  background-color: white;
+  color: #0a3200;
+}
+
+.card-image:hover .learn-more::after {
+  transform: translateX(3px);
 }
 
 .card-image:hover .card-overlay {
