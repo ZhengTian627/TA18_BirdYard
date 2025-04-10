@@ -20,7 +20,7 @@ fetchRecommendedPlants(); });
           placeholder="Enter your Location"
           class="location-input"
         />
-        <button @click="searchLocation" class="btn-search">GO GREEN</button>
+        <button @click="searchLocation" class="btn-search">Search Plants</button>
       </div>
 
       <!-- Address Suggestions Dropdown -->
@@ -131,7 +131,7 @@ fetchRecommendedPlants(); });
       </div>
     </div>
     <section class="cta-section">
-      <router-link to="/bird" class="btn btn-large">Find your bird</router-link>
+      <router-link to="/bird" class="btn btn-large">Birds Detection</router-link>
     </section>
   </div>
 </template>
