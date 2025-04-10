@@ -659,7 +659,6 @@ export default {
 .detection-result-item {
   margin-bottom: 2rem;
   font-size: 1.1rem;
-  min-width: 100px;
 }
 
 .detection-result-label {

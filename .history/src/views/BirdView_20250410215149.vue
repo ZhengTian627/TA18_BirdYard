@@ -61,7 +61,7 @@
               <div v-if="result" class="detection-results-card">
                 <h2 class="detection-heading">Detection Results</h2>
                 <div class="detection-result-item">
-                  <span class="detection-result-label">Species:</span>
+                  <span class="detection-result-label">Species: </span>
                   <span class="detection-result-value">{{ result.class_name }}</span>
                 </div>
                 <div class="detection-result-item">
@@ -657,9 +657,8 @@ export default {
 }
 
 .detection-result-item {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.1rem;
-  min-width: 100px;
 }
 
 .detection-result-label {

@@ -20,7 +20,7 @@
             <span class="feature-icon">✓</span> Personalized Garden Recommendations
           </div>
         </div>
-        <p class="tip">Please upload only bird pictures</p>
+        <p>Please upload only bird pictures</p>
         <!-- Upload Button as Main CTA -->
         <label for="upload" class="upload-button">
           <span v-if="!isLoading">Upload Image Now!</span>
@@ -65,12 +65,15 @@
                   <span class="detection-result-value">{{ result.class_name }}</span>
                 </div>
                 <div class="detection-result-item">
-                  <span class="detection-result-label">Confidence: </span>
+                  <span class="detection-result-label">Confidence:</span>
                   <span class="detection-result-value"
                     >{{ (result.confidence * 100).toFixed(2) }}%</span
                   >
                 </div>
-                <p class="detection-description">We've detected this bird species in your image.</p>
+                <p class="detection-description">
+                  We've detected this bird species in your image. Learn more about how to attract
+                  and support this species in your garden.
+                </p>
               </div>
 
               <div v-else-if="isLoading" class="detection-processing-message">
@@ -552,10 +555,7 @@ export default {
   margin-right: 10px;
   font-weight: bold;
 }
-.tip {
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
+
 .upload-button {
   display: inline-block;
   background-color: #f3f9c0;
@@ -657,9 +657,8 @@ export default {
 }
 
 .detection-result-item {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.1rem;
-  min-width: 100px;
 }
 
 .detection-result-label {
