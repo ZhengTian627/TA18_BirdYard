@@ -248,8 +248,8 @@
         </div>
 
         <div class="stat-item">
-          <div class="stat-number">33</div>
-          <div class="stat-label">Cities</div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Gardens Created</div>
         </div>
 
         <div class="stat-item">
