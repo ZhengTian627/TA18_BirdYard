@@ -144,9 +144,8 @@ fetchRecommendedPlants(); });
 </template>
 
 <script>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive } from 'vue'
 import axios from 'axios'
-
 // recommended Plants API
 const getRecommendedPlants = async (state, season) => {
   try {
@@ -314,7 +313,6 @@ export default {
 
       const selected = suggestions.value[index]
       address.value = selected.display_name
-      localStorage.setItem('plantAddress', address.value)
 
       // Update location coordinates
       if (selected.center) {
@@ -322,10 +320,10 @@ export default {
           lng: selected.center[0],
           lat: selected.center[1],
         }
-        localStorage.setItem('plantSelectedLocation', JSON.stringify(selectedLocation.value))
       }
 
-      suggestions.value = []
+      suggestions.value = [] // Clear suggestions only
+      // We no longer determine the state or fetch plants here
     }
 
     const searchLocation = async () => {
@@ -406,7 +404,6 @@ export default {
 
     const selectSeason = (season) => {
       selectedSeason.value = season
-      localStorage.setItem('selectedSeason', season)
       fetchRecommendedPlants()
     }
 
@@ -420,12 +417,10 @@ export default {
         const plantData = await getRecommendedPlants(selectedState.value, selectedSeason.value)
         console.log('API return plants array:', plantData)
         recommendedPlants.value = plantData
-        localStorage.setItem('recommendedPlants', JSON.stringify(plantData))
       } catch (err) {
         console.error('Failed to get plant recommendations:', err)
         error.value = 'Could not load plant recommendations. Please try again later.'
-        const savedPlants = localStorage.getItem('recommendedPlants')
-        recommendedPlants.value = savedPlants ? JSON.parse(savedPlants) : []
+        recommendedPlants.value = []
       } finally {
         loading.value = false
       }
@@ -440,16 +435,7 @@ export default {
       const imagePath = `/images/plants/${encodedPlantName}.jpg`
       return imagePath
     }
-    onMounted(() => {
-      if (selectedState.value && selectedSeason.value) {
-        const savedPlants = localStorage.getItem('recommendedPlants')
-        if (savedPlants) {
-          recommendedPlants.value = JSON.parse(savedPlants)
-        } else {
-          fetchRecommendedPlants()
-        }
-      }
-    })
+
     return {
       address,
       suggestions,
@@ -517,7 +503,7 @@ export default {
 /* Banner styles */
 .banner {
   background-image:
-    linear-gradient(rgba(0, 50, 0, 0.8), rgba(0, 50, 0, 0.6)), url('@/assets/images/garden.jpeg');
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/garden.jpeg');
   background-size: cover;
   background-position: center;
   height: 400px;

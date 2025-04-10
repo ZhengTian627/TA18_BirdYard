@@ -12,7 +12,7 @@
         <div class="hero-buttons">
           <p class="hero-subtitle"></p>
           <p class="hero-cta">Wanna Know our story?</p>
-          <router-link to="/about" class="btn hero-cta-btn">What is BirdYard?</router-link>
+          <router-link to="/about" class="btn btn-primary">What is BirdYard?</router-link>
         </div>
       </div>
     </section>
@@ -355,14 +355,6 @@ export default defineComponent({
   background-color: rgba(194, 229, 156, 0.8);
   color: #0a3200;
   border: 2px solid #c2e59c;
-}
-.hero-cta-btn {
-  background-color: rgba(194, 229, 156, 0.8);
-  color: #0a3200;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: 2px solid #c2e59c;
-  transition: all 0.3s ease;
 }
 
 .btn-secondary {

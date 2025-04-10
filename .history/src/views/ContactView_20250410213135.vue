@@ -41,13 +41,13 @@
           </div>
           <h3 class="contact-card-title">Follow Us</h3>
           <div class="social-links">
-            <a href="https://instagram.com/" target="_blank" class="social-link">
+            <a href="https://instagram.com/birdyard" target="_blank" class="social-link">
               <img src="../assets/images/Inslogo.webp" alt="Instagram" class="social-icon" />
             </a>
-            <a href="https://facebook.com/" target="_blank" class="social-link">
+            <a href="https://facebook.com/birdyard" target="_blank" class="social-link">
               <img src="../assets/images/facebook-icon.webp" alt="Facebook" class="social-icon" />
             </a>
-            <a href="https://twitter.com/" target="_blank" class="social-link">
+            <a href="https://twitter.com/birdyard" target="_blank" class="social-link">
               <img src="../assets/images/twitter-icon.png" alt="Twitter" class="social-icon" />
             </a>
           </div>

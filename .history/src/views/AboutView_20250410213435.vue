@@ -131,7 +131,7 @@ export default {
   padding: 80px 0;
   text-align: center;
   background-image:
-    linear-gradient(rgba(0, 50, 0, 0.3), rgba(0, 50, 0, 0.6)),
+    linear-gradient(rgba(0, 50, 0, 0.6), rgba(0, 50, 0, 0.6)),
     url('@/assets/images/aboutbanner.png');
   background-size: 100% auto;
   min-height: 400px;

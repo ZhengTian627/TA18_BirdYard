@@ -5,14 +5,14 @@
       <div class="hero-content">
         <h1 class="hero-title">WHERE PLANTS TAKE ROOTS,<br />BIRDS FIND HOME.</h1>
         <p class="hero-subtitle">
-          We help you fight habitat loss due to climate change.<br />
-          Together, we'll transform your garden into a vibrant sanctuary<br />
-          where birds thrive and nature flourishes.
+          "Bird Yard helps you build a safe, healthy, bird-friendly backyard — a true home for
+          birds."
         </p>
         <div class="hero-buttons">
           <p class="hero-subtitle"></p>
-          <p class="hero-cta">Wanna Know our story?</p>
-          <router-link to="/about" class="btn hero-cta-btn">What is BirdYard?</router-link>
+          <p class="hero-cta">Ready to create your bird sanctuary? Take the next step:</p>
+          <router-link to="/contact" class="btn btn-primary">Get In Touch</router-link>
+          <router-link to="/about" class="btn btn-secondary">Who We Are</router-link>
         </div>
       </div>
     </section>
@@ -46,7 +46,6 @@
     <section class="info-section">
       <div class="container">
         <h2 class="info-title">Discover Garden Wisdom</h2>
-        <p class="info-subtitle">Click "learn more" on picture to see details.</p>
 
         <!-- Plant Information Card -->
         <div class="info-card-container">
@@ -161,102 +160,10 @@
         </div>
       </div>
     </section>
-    <section class="process-section">
-      <div class="process-header">
-        <h2 class="process-title">Simple and Effective Journey</h2>
-        <a href="/how-it-works" class="process-link">How It Works</a>
-      </div>
 
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-image">
-            <!-- SVG or image for finding plants -->
-            <img src="@/assets/images/find-plants-icon.webp" alt="Find plants illustration" />
-          </div>
-          <div class="step-number">01</div>
-          <h3 class="step-title">Find Native Plants</h3>
-          <p class="step-description">
-            Discover plants native to your region that support local bird species and thrive in your
-            climate.
-          </p>
-        </div>
-
-        <div class="process-step">
-          <div class="step-image">
-            <!-- SVG or image for garden design -->
-            <img src="@/assets/images/design-garden-icon.png" alt="Design garden illustration" />
-          </div>
-          <div class="step-number">02</div>
-          <h3 class="step-title">Design Your Garden</h3>
-          <p class="step-description">
-            Create a beautiful, functional garden plan that incorporates bird-friendly elements and
-            native plants.
-          </p>
-        </div>
-
-        <div class="process-step">
-          <div class="step-image">
-            <!-- SVG or image for attracting birds -->
-            <img src="@/assets/images/attract-birds-icon.webp" alt="Birds in garden illustration" />
-          </div>
-          <div class="step-number">03</div>
-          <h3 class="step-title">Attract Local Birds</h3>
-          <p class="step-description">
-            Watch as your garden becomes a haven for local birds, providing food, shelter, and
-            nesting sites.
-          </p>
-        </div>
-
-        <div class="process-step">
-          <div class="step-image">
-            <!-- SVG or image for identifying birds -->
-            <img
-              src="@/assets/images/identify-birds-icon.webp"
-              alt="Bird identification illustration"
-            />
-          </div>
-          <div class="step-number">04</div>
-          <h3 class="step-title">Identify & Protect Birds</h3>
-          <p class="step-description">
-            Learn to identify visiting birds and contribute to conservation efforts, especially for
-            endangered species.
-          </p>
-        </div>
-      </div>
-
-      <div class="next-steps">
-        <h3 class="next-steps-title">Ready to begin your journey?</h3>
-        <div class="next-steps-content">
-          <router-link to="/plantadvice" class="btn btn-large"
-            >Let's Find Plants for your Garden
-          </router-link>
-        </div>
-      </div>
-    </section>
-    <!-- stats -->
-    <section class="stats-section">
-      <p class="stats-section-intro">Our Website Scope</p>
-      <div class="stats-container">
-        <div class="stat-item">
-          <div class="stat-number">27</div>
-          <div class="stat-label">Endangered Bird Species</div>
-        </div>
-
-        <div class="stat-item">
-          <div class="stat-number">312</div>
-          <div class="stat-label">Native Plants</div>
-        </div>
-
-        <div class="stat-item">
-          <div class="stat-number">45k</div>
-          <div class="stat-label">Gardens Created</div>
-        </div>
-
-        <div class="stat-item">
-          <div class="stat-number">89%</div>
-          <div class="stat-label">Habitat Growth</div>
-        </div>
-      </div>
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <router-link to="/plantadvice" class="btn btn-large">Let's Build Your Backyard</router-link>
     </section>
 
     <!-- Grow in 4 Steps Section -->
@@ -346,7 +253,7 @@ export default defineComponent({
   padding: 12px 24px;
   border-radius: 30px;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 600;
   transition: all 0.3s ease;
   text-align: center;
 }
@@ -355,14 +262,6 @@ export default defineComponent({
   background-color: rgba(194, 229, 156, 0.8);
   color: #0a3200;
   border: 2px solid #c2e59c;
-}
-.hero-cta-btn {
-  background-color: rgba(194, 229, 156, 0.8);
-  color: #0a3200;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: 2px solid #c2e59c;
-  transition: all 0.3s ease;
 }
 
 .btn-secondary {
@@ -388,7 +287,7 @@ export default defineComponent({
 
 /* Hero Section */
 .hero {
-  height: 80vh;
+  height: 100vh;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/homepage.jpeg');
   background-size: cover;
@@ -397,15 +296,9 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 10px;
+  padding: 0 20px;
 }
-.hero-cta {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: #ffffff;
-  text-align: center;
-}
+
 .hero-content {
   max-width: 900px;
 }
@@ -426,64 +319,16 @@ export default defineComponent({
 }
 
 .hero-buttons {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
-/* stats Section */
-.stats-section {
+/* CTA Section */
+.cta-section {
+  padding: 40px 0;
   text-align: center;
-  background-color: #f9f7f0;
-}
-.stats-section-intro {
-  font-size: 2.3rem;
-  padding: 1rem 4rem;
-  width: 100%;
-}
-.stats-section {
-  gap: 2rem;
-  padding: 4rem 2rem;
+  background-color: #f9f9f9;
 }
 
-.stats-container {
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.stat-item {
-  text-align: center;
-  padding: 0 1rem;
-  flex: 1;
-  min-width: 200px;
-}
-
-.stat-number {
-  font-size: 4.5rem;
-  font-weight: 700;
-  color: #2c5530; /* 深绿色数字 */
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 1.25rem;
-  color: #2c5530; /* 同样的深绿色标签 */
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .stats-container {
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .stat-item {
-    min-width: unset;
-  }
-}
 /* About Section */
 .about-section {
   padding: 80px 0;
@@ -580,12 +425,6 @@ export default defineComponent({
 
 .info-title {
   font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 50px;
-  color: #0a3200;
-}
-.info-subtitle {
-  font-size: 1.2rem;
   text-align: center;
   margin-bottom: 50px;
   color: #0a3200;
@@ -787,109 +626,6 @@ export default defineComponent({
 .fade-leave-to {
   opacity: 0;
   transform: translateY(-10px);
-}
-.process-section {
-  background-color: #0a2601; /* 深绿色背景 */
-  color: #f5f5dc; /* 米色文字 */
-  padding: 5rem 2rem;
-}
-
-.process-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4rem;
-}
-
-.process-title {
-  font-size: 3rem;
-  color: #f5f5dc; /* 米色文字 */
-  font-weight: 600;
-}
-
-.process-link {
-  border: 1px solid #f5f5dc;
-  padding: 0.75rem 1.5rem;
-  color: #f5f5dc;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.process-link:hover {
-  background-color: #f5f5dc;
-  color: #0a2601;
-}
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-@media (max-width: 992px) {
-  .process-steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .process-steps {
-    grid-template-columns: 1fr;
-  }
-}
-
-.process-step {
-  display: flex;
-  flex-direction: column;
-}
-
-.step-image {
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.step-image img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.step-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #f5f5dc;
-  margin-bottom: 0.5rem;
-}
-
-.step-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #f5f5dc;
-}
-
-.step-description {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.next-steps {
-  margin-top: 4rem;
-  text-align: center;
-}
-
-.next-steps-title {
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
-  color: #f5f5dc;
-}
-
-.next-steps-content {
-  /* 为未来的内容预留空间 */
-  min-height: 100px;
 }
 
 /* Responsive Design */

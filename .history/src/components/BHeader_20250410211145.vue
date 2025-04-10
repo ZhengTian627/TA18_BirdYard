@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <div v-if="showBackButton" class="back-button" @click="goBack">
-        <img src="@/assets/back.png" alt="Back" class="back-icon" />
+        <i class="back-icon">←</i> Back
       </div>
 
       <div class="logo">
@@ -128,7 +128,7 @@ export default {
 }
 .back-button {
   position: absolute;
-  left: 30px;
+  left: 20px;
   color: #ffffff;
   cursor: pointer;
   display: flex;
@@ -142,7 +142,6 @@ export default {
 }
 
 .back-icon {
-  height: 26px;
   margin-right: 5px;
   font-size: 18px;
 }

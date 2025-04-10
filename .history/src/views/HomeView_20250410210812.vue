@@ -359,10 +359,7 @@ export default defineComponent({
 .hero-cta-btn {
   background-color: rgba(194, 229, 156, 0.8);
   color: #0a3200;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
   border: 2px solid #c2e59c;
-  transition: all 0.3s ease;
 }
 
 .btn-secondary {

@@ -11,8 +11,14 @@
         </p>
         <div class="hero-buttons">
           <p class="hero-subtitle"></p>
-          <p class="hero-cta">Wanna Know our story?</p>
-          <router-link to="/about" class="btn hero-cta-btn">What is BirdYard?</router-link>
+          <p class="hero-cta">Ready to create your bird sanctuary?</p>
+          <p class="hero-cta">Take the next step</p>
+          <router-link to="/plantadvice" class="btn btn-primary"
+            >Find Plants for your Garden</router-link
+          >
+          <router-link to="/bird" class="btn btn-secondary"
+            >Choose Plants for Your Garden</router-link
+          >
         </div>
       </div>
     </section>
@@ -46,7 +52,6 @@
     <section class="info-section">
       <div class="container">
         <h2 class="info-title">Discover Garden Wisdom</h2>
-        <p class="info-subtitle">Click "learn more" on picture to see details.</p>
 
         <!-- Plant Information Card -->
         <div class="info-card-container">
@@ -346,7 +351,7 @@ export default defineComponent({
   padding: 12px 24px;
   border-radius: 30px;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 600;
   transition: all 0.3s ease;
   text-align: center;
 }
@@ -355,14 +360,6 @@ export default defineComponent({
   background-color: rgba(194, 229, 156, 0.8);
   color: #0a3200;
   border: 2px solid #c2e59c;
-}
-.hero-cta-btn {
-  background-color: rgba(194, 229, 156, 0.8);
-  color: #0a3200;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: 2px solid #c2e59c;
-  transition: all 0.3s ease;
 }
 
 .btn-secondary {
@@ -388,7 +385,7 @@ export default defineComponent({
 
 /* Hero Section */
 .hero {
-  height: 80vh;
+  height: 100vh;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/homepage.jpeg');
   background-size: cover;
@@ -397,7 +394,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 .hero-cta {
   font-size: 1.2rem;
@@ -426,7 +423,7 @@ export default defineComponent({
 }
 
 .hero-buttons {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 /* stats Section */
@@ -436,7 +433,7 @@ export default defineComponent({
 }
 .stats-section-intro {
   font-size: 2.3rem;
-  padding: 1rem 4rem;
+  padding: 4rem 2rem;
   width: 100%;
 }
 .stats-section {
@@ -580,12 +577,6 @@ export default defineComponent({
 
 .info-title {
   font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 50px;
-  color: #0a3200;
-}
-.info-subtitle {
-  font-size: 1.2rem;
   text-align: center;
   margin-bottom: 50px;
   color: #0a3200;

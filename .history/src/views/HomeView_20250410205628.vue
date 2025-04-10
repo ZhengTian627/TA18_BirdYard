@@ -11,8 +11,14 @@
         </p>
         <div class="hero-buttons">
           <p class="hero-subtitle"></p>
-          <p class="hero-cta">Wanna Know our story?</p>
-          <router-link to="/about" class="btn hero-cta-btn">What is BirdYard?</router-link>
+          <p class="hero-cta">Ready to create your bird sanctuary?</p>
+          <p class="hero-cta">Take the next step</p>
+          <router-link to="/plantadvice" class="btn btn-primary"
+            >Find Plants for your Garden</router-link
+          >
+          <router-link to="/bird" class="btn btn-secondary"
+            >Choose Plants for Your Garden</router-link
+          >
         </div>
       </div>
     </section>
@@ -46,7 +52,6 @@
     <section class="info-section">
       <div class="container">
         <h2 class="info-title">Discover Garden Wisdom</h2>
-        <p class="info-subtitle">Click "learn more" on picture to see details.</p>
 
         <!-- Plant Information Card -->
         <div class="info-card-container">
@@ -233,30 +238,32 @@
         </div>
       </div>
     </section>
-    <!-- stats -->
-    <section class="stats-section">
-      <p class="stats-section-intro">Our Website Scope</p>
-      <div class="stats-container">
-        <div class="stat-item">
-          <div class="stat-number">27</div>
-          <div class="stat-label">Endangered Bird Species</div>
-        </div>
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <p class="cta-section-intro">Please Start Your Magic Garden by Click</p>
+      <section class="stats-section">
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-number">67</div>
+            <div class="stat-label">Bird Species</div>
+          </div>
 
-        <div class="stat-item">
-          <div class="stat-number">312</div>
-          <div class="stat-label">Native Plants</div>
-        </div>
+          <div class="stat-item">
+            <div class="stat-number">312</div>
+            <div class="stat-label">Native Plants</div>
+          </div>
 
-        <div class="stat-item">
-          <div class="stat-number">45k</div>
-          <div class="stat-label">Gardens Created</div>
-        </div>
+          <div class="stat-item">
+            <div class="stat-number">45k</div>
+            <div class="stat-label">Gardens Created</div>
+          </div>
 
-        <div class="stat-item">
-          <div class="stat-number">89%</div>
-          <div class="stat-label">Habitat Growth</div>
+          <div class="stat-item">
+            <div class="stat-number">89%</div>
+            <div class="stat-label">Habitat Growth</div>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
 
     <!-- Grow in 4 Steps Section -->
@@ -346,7 +353,7 @@ export default defineComponent({
   padding: 12px 24px;
   border-radius: 30px;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 600;
   transition: all 0.3s ease;
   text-align: center;
 }
@@ -355,14 +362,6 @@ export default defineComponent({
   background-color: rgba(194, 229, 156, 0.8);
   color: #0a3200;
   border: 2px solid #c2e59c;
-}
-.hero-cta-btn {
-  background-color: rgba(194, 229, 156, 0.8);
-  color: #0a3200;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: 2px solid #c2e59c;
-  transition: all 0.3s ease;
 }
 
 .btn-secondary {
@@ -388,7 +387,7 @@ export default defineComponent({
 
 /* Hero Section */
 .hero {
-  height: 80vh;
+  height: 100vh;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@/assets/images/homepage.jpeg');
   background-size: cover;
@@ -397,7 +396,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 .hero-cta {
   font-size: 1.2rem;
@@ -426,26 +425,24 @@ export default defineComponent({
 }
 
 .hero-buttons {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
-/* stats Section */
-.stats-section {
+/* CTA Section */
+.cta-section {
+  padding: 40px 0;
   text-align: center;
-  background-color: #f9f7f0;
+  background-color: #f9f9f9;
 }
-.stats-section-intro {
-  font-size: 2.3rem;
-  padding: 1rem 4rem;
-  width: 100%;
+.cta-section-intro {
+  background-color: #f9f9f9;
 }
 .stats-section {
-  gap: 2rem;
+  background-color: #f9f7f0; /* 浅米色背景 */
   padding: 4rem 2rem;
 }
 
 .stats-container {
-  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -580,12 +577,6 @@ export default defineComponent({
 
 .info-title {
   font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 50px;
-  color: #0a3200;
-}
-.info-subtitle {
-  font-size: 1.2rem;
   text-align: center;
   margin-bottom: 50px;
   color: #0a3200;

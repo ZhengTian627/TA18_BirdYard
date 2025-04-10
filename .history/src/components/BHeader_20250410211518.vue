@@ -128,7 +128,7 @@ export default {
 }
 .back-button {
   position: absolute;
-  left: 30px;
+  left: 20px;
   color: #ffffff;
   cursor: pointer;
   display: flex;
@@ -142,7 +142,6 @@ export default {
 }
 
 .back-icon {
-  height: 26px;
   margin-right: 5px;
   font-size: 18px;
 }

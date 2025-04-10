@@ -50,7 +50,7 @@ export default {
 
 <style scoped>
 .plant-detail-container {
-  margin-top: 60px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   padding: 40px 20px;
