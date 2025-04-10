@@ -662,7 +662,11 @@ export default {
 /* Recommendations section styles */
 .recommendations-section {
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .recommendations-title {
@@ -680,9 +684,12 @@ export default {
 }
 
 .plants-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; 
+  gap: 20px;
+  overflow-x: auto; 
+  padding: 10px;
 }
 
 .plant-card {
