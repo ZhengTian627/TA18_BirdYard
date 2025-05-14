@@ -1,0 +1,15 @@
+path: C:\Users\Admin\Documents\FIT5120_MAI_Assignment\datasets\bird_dataset_yolo
+train: images\train
+val: images\val
+nc: 10
+names:
+- Australasian_Bittern
+- Australian_Painted_Snipe
+- Gang-gang_Cockatoo
+- Grey_Falcon
+- Painted_Honeyeater
+- Pilotbird
+- Plains_Wanderer
+- Southern_Whiteface
+- Swift_Parrot
+- White-throated_Needletail
